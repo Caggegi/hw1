@@ -317,7 +317,7 @@ function closeIconMenu(){
 
 const header = document.querySelector("header div#background");
 
-fetch("https://picsum.photos/2800/700").then(onResponse, onError);
+fetch("https://picsum.photos/2000/700").then(onResponse, onError);
 
 function onResponse(response){
     header.style.backgroundImage = "url("+response.url+")";
@@ -325,7 +325,7 @@ function onResponse(response){
 
 function onError(error){
     console.log(error);
-    header.style.backgroundImage = "url(img/default.jpg)";
+    header.style.backgroundImage = "url('https://raw.githubusercontent.com/Caggegi/HW1/main/img/default.jpg')";
 }
 
 function onError2(error){

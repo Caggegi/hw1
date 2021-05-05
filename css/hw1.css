@@ -1,6 +1,6 @@
 @font-face{
     font-family: 'SF_custom';
-    src: url("font/SF-UI-Display-Regular.otf");
+    src: url("https://github.com/Caggegi/mhw1/blob/master/font/SF-UI-Display-Regular.otf?raw=true");
 }
 
 body{
@@ -437,7 +437,7 @@ div.close_button{
 }
 
 div.close_button:hover{
-    background-image: url(img/icons/close-circle.svg);
+    background-image: url("https://raw.githubusercontent.com/Caggegi/HW1/main/img/icons/close-circle.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -452,7 +452,7 @@ div.save_button{
 }
 
 div.save_button:hover{
-    background-image: url(img/icons/check-circle.svg);
+    background-image: url("https://raw.githubusercontent.com/Caggegi/HW1/main/img/icons/check-circle.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

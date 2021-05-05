@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8"/>
-        <link href="style/hw1.css" rel="stylesheet"/>
+        <link href="css/hw1.css" rel="stylesheet"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>VideoTube o46002042</title>
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -12,8 +12,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
-        <script src="javascript/contents.js " defer></script>
-        <script src="javascript/script.js" defer></script>
+        <script src="js/contents.js " defer></script>
+        <script src="js/script.js" defer></script>
     </head>
     <body>
         <div class="menu_priority hide"></div>
@@ -52,7 +52,7 @@
                 </input>
                 <div>
                     <img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/magnify.svg"/>
-                    <img class="mobile" src="img/icons/account-circle-outline.svg"/>
+                    <img class="mobile" src="https://raw.githubusercontent.com/Caggegi/mhw3/main/img/icons/account-circle-outline.svg"/>
                 </div>
             </div>
             <div id="info">
@@ -61,7 +61,7 @@
                         <h3>Default Name</h3>
                         <p>Default Description</p>
                     </div>
-                    <img src="img/icons/account-circle-outline.svg"/>
+                    <img src="https://raw.githubusercontent.com/Caggegi/mhw3/main/img/icons/account-circle-outline.svg"/>
                 </div>
             </div>
         </header>
@@ -143,7 +143,7 @@
             <div id="social">
                 <a href="https://www.facebook.com/rosario.caggegi.142" target="about:blank"><img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/facebook.svg"></a>
                 <a href="https://www.instagram.com/rosario.caggegi/" target="about:blank"><img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/instagram.svg"></a>
-                <a href="https://github.com/Caggegi/mhw3" target="about:blank"><img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/github.svg"></a>
+                <a href="https://github.com/Caggegi/hw1" target="about:blank"><img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/github.svg"></a>
             </div>
             <div>
                 <p>Questo sito web è stato creato da Rosario Caggegi o46002042 usando HTML e CSS</p>
