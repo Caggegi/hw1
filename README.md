@@ -14,7 +14,7 @@ Gli utenti premium possono abbonarsi o meno a un Creator così da supportarlo.
 - Aggiunta interazione con il database di VideoTube
 
 ### Website:
-- https://caggegi.github.io/hw1/index.html
+- https://caggegi.github.io/HW1/index.html
 
 ### Credits:
 Rosario Caggegi o46002042     
