@@ -1,0 +1,90 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: #151515;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+div#video_frame{
+    margin: 20px 0px 0px 15px;
+    width: 50%;
+}
+
+div#video_frame iframe{
+    border-radius: 4px;
+    height: 28.125vw;
+    width: 50vw;
+    box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 4px;
+}
+
+main{
+    display: flex;
+}
+
+div#info{
+    margin: 20px 2%;
+    width: 50%;
+    padding: 0px 20px;
+    background-color: #080808;
+    border-radius: 4px;
+    height: 28.125vw;
+}
+
+div#info section div.description{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+main div.controls div#page_controls img{
+    background-color: #080808;
+    padding: 10px;
+    border-radius: 100%;
+}
+
+main div.controls div#page_controls img#home:hover{
+    background-color: #0b4ddb99;
+}
+
+main div.controls div#page_controls img#recents:hover{
+    background-color: #0bcf3c99;
+}
+
+main div.controls div#page_controls img#trend:hover{
+    background-color: #ffe60099;
+}
+
+main div.controls div#page_controls img#pref:hover{
+    background-color: #fa171799;
+}
+
+
+main div.controls{
+    display: flex;
+    justify-content: space-between;
+}
+
+main div.controls div#interact{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+main div.controls div#interact div{
+    display: flex;
+    flex-direction: row;
+}
+
+main div.controls div#interact div div#subscribe{
+    background-color: rgb(0, 110, 110);
+    border-radius: 6px 0px 0px 6px;
+    padding: 2px;
+}
+
+main div.controls div#interact div div#support{
+    background-color: rgb(110, 110, 0);    
+    border-radius: 0px 6px 6px 0px;
+    padding: 2px;
+}
