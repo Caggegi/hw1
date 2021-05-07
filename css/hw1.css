@@ -1,8 +1,3 @@
-@font-face{
-    font-family: 'SF_custom';
-    src: url("https://github.com/Caggegi/mhw1/blob/master/font/SF-UI-Display-Regular.otf?raw=true");
-}
-
 body{
     background-color: #151515;
     font-family: 'Roboto', sans-serif;
@@ -71,7 +66,7 @@ header div#search input:focus{
 
 header div#account{
     font-style: normal;
-    font-family: 'SF_custom', 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: #fff;
     display: flex;
     align-items: center;
@@ -400,13 +395,17 @@ footer div p{
 /*Menu per la scelta della foto profilo*/
 
 div.icon_menu{
+    /*
     color: black;
+    background-color: rgb(245, 245, 245);
+    */
+    color: white;
+    background-color: rgb(34, 34, 34);
     z-index: 10;
     position: fixed;
     height: 66vh;
     width: 66vw;
     min-height: 400px;
-    background-color: rgb(245, 245, 245);
     border-radius: 8px;
     right: 16.5vw;
     bottom: 16.5vh;
@@ -415,7 +414,10 @@ div.icon_menu{
 }
 
 div.icon_menu div.m_header{
+    /*
     background-color: rgb(200, 200, 200);
+    */
+    background-color: rgb(22, 22, 22);
     height: 15%;
     border-radius: 8px 8px 0px 0px;
     box-shadow: 0px 1px 2px rgba(0,0,0,0.5);
@@ -437,7 +439,7 @@ div.close_button{
 }
 
 div.close_button:hover{
-    background-image: url("https://raw.githubusercontent.com/Caggegi/HW1/main/img/icons/close-circle.svg");
+    background-image: url("https://raw.githubusercontent.com/Caggegi/mhw3/main/img/icons/close-circle.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -452,7 +454,7 @@ div.save_button{
 }
 
 div.save_button:hover{
-    background-image: url("https://raw.githubusercontent.com/Caggegi/HW1/main/img/icons/check-circle.svg");
+    background-image: url("https://raw.githubusercontent.com/Caggegi/mhw3/main/img/icons/check-circle.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -465,21 +467,34 @@ div.icon_menu div.m_header div.form_container{
 }
 
 div.icon_menu div.m_header div.form_container input#category{
-    border: 1px solid grey;
-    border-radius: 4px;
+    border: 0px solid rgb(15, 15, 15);
+    border-bottom: 2px solid rgb(15, 15, 15);
+    border-radius: 0px;
+    background-color: rgba(0,0,0,0);
+    color:rgb(204, 204, 204)
 }
 
 div.icon_menu div.m_header div.form_container input#send{
-    background-color: dodgerblue;
+    background-color: rgb(12, 12, 12);
     color: white;
-    border-radius: 4px;
+    border-radius: 2px;
     border: 0px;
     margin-right: 16px;
+    height: 1.5rem;
 }
 
 div.icon_menu div.m_header div.form_container input#send:hover{
-    background-color: rgb(92, 121, 150);
+    background-color: rgb(5, 5, 5);
 }
+
+div.icon_menu div.m_header div.form_container input#category:focus{
+    border: 0px solid rgb(15, 15, 15);
+    border-bottom: 2px solid rgb(77, 77, 77);
+    border-radius: 0px;
+    background-color: rgba(0,0,0,0);
+    outline: none;
+}
+
 
 div.icon_menu div.m_body{
     padding: 16px;
@@ -494,14 +509,32 @@ div.icon_menu div.m_body div.current div{
     display: flex;
     width: 100%;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+}
+
+div.icon_menu div.m_body div.current div a{
+    text-decoration: none;
+    padding: 2px 4px;
+    color: rgb(255, 255, 255);
+    border:1px solid rgb(255, 255, 255);
+    background-color: rgb(34, 34, 34);
+    border-radius: 8px;
+    margin: 2px 0px;
+}
+
+div.icon_menu div.m_body div.current div a:hover{
+    background-color: rgb(20, 20, 20);
 }
 
 div.icon_menu div.m_body div.current div input{
     border: 0px;
     width: 100%;
+    /*
     background-color: rgb(245, 245, 245);
+    */
+    color: white;
+    background-color: rgb(34, 34, 34);
     text-align: left;
 }
 

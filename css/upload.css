@@ -5,3 +5,65 @@ body{
     color: white;
     font-family: 'Roboto', sans-serif;
 }
+
+main{
+    margin-top: 70px;
+}
+
+main div.row{
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid rgb(44, 44, 44);
+}
+
+main div.row img{
+    padding: 20px 20px;
+    width: 300px;
+    height: calc(300px*9/16);
+}
+
+header div.relative img#plus_button{
+    height: 39px;
+    width: 39px;
+    padding: 9px;
+    background-color: rgb(226, 17, 45);
+    border-radius: 100%;
+    box-shadow: 2px 2px 4px black;
+    position: absolute;
+    top: 36px;
+    right: 36px;
+}
+
+header{
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    margin: 0px;
+    background-color: rgb(26, 26, 26);
+    box-shadow: 20px 0px 20px black;
+}
+
+header div.relative{
+    padding: 10px;
+    padding-left: 20px;
+    height: 50px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+header div.relative img#profile{
+    margin: 10px;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 100%;
+}
+
+div.upload{
+    width: 66%;
+    height: 33%;
+    position: fixed;
+    top: 33%;
+    left: 16.5%;
+    background-color: #999999;
+}

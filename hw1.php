@@ -1,3 +1,10 @@
+<?php
+    $user="Default Username";
+    $bio="Default Desription";
+    $profile="https://raw.githubusercontent.com/Caggegi/mhw3/main/img/icons/account-circle-outline.svg";
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,6 +43,7 @@
                     <div>
                         <input type="text" placeholder="Name" id="current_name"></input>
                         <input type="text" placeholder="description" id="current_description"></input>
+                        <a href="signup.php">Sign Up</a>
                     </div>
                 </div>
                 <h2>Seleziona</h2>
@@ -52,16 +60,20 @@
                 </input>
                 <div>
                     <img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/magnify.svg"/>
-                    <img class="mobile" src="https://raw.githubusercontent.com/Caggegi/mhw3/main/img/icons/account-circle-outline.svg"/>
+                    <?php
+                        echo '<img class="mobile" src="'.$profile.'"/>';
+                    ?>        
                 </div>
             </div>
             <div id="info">
                 <div id="account">
-                    <div>
-                        <h3>Default Name</h3>
-                        <p>Default Description</p>
-                    </div>
-                    <img src="https://raw.githubusercontent.com/Caggegi/mhw3/main/img/icons/account-circle-outline.svg"/>
+                    <?php
+                        echo "<div>";
+                        echo    '<h3>'.$user.'</h3>';
+                        echo    '<p>'.$bio.'</p>';
+                        echo "</div>";
+                        echo '<img src="'.$profile.'"/>';
+                    ?>
                 </div>
             </div>
         </header>

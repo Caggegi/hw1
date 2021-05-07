@@ -38,25 +38,25 @@ div#info section div.description{
     height: 100%;
 }
 
-main div.controls div#page_controls img{
+main div.controls div#page_controls a img{
     background-color: #080808;
     padding: 10px;
     border-radius: 100%;
 }
 
-main div.controls div#page_controls img#home:hover{
+main div.controls div#page_controls a img#home:hover{
     background-color: #0b4ddb99;
 }
 
-main div.controls div#page_controls img#recents:hover{
+main div.controls div#page_controls a img#recents:hover{
     background-color: #0bcf3c99;
 }
 
-main div.controls div#page_controls img#trend:hover{
+main div.controls div#page_controls a img#trend:hover{
     background-color: #ffe60099;
 }
 
-main div.controls div#page_controls img#pref:hover{
+main div.controls div#page_controls a img#pref:hover{
     background-color: #fa171799;
 }
 
@@ -77,14 +77,54 @@ main div.controls div#interact div{
     flex-direction: row;
 }
 
-main div.controls div#interact div div#subscribe{
-    background-color: rgb(0, 110, 110);
+div#subscribe{
+    background-color: rgb(53, 53, 53);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 6px 0px 0px 6px;
-    padding: 2px;
+    border-right: 1px solid rgb(106, 106, 106);
+    padding: 0px 5px;
+    height: 30px;
+    box-shadow: black 0px 2px 3px;
 }
 
-main div.controls div#interact div div#support{
-    background-color: rgb(110, 110, 0);    
+div#subscribe:hover{
+    background-color: rgb(142, 42, 224);
+    cursor: pointer;
+}
+
+div#support{
+    background-color: rgb(53, 53, 53);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 0px 6px 6px 0px;
-    padding: 2px;
+    border-left: 1px solid rgb(106, 106, 106);
+    padding: 0px 5px;
+    height: 30px;
+    box-shadow: black 2px 2px 3px;
+}
+
+div#support:hover{
+    background-color: rgb(60, 123, 206); 
+    cursor: pointer;
+}
+
+img#up{
+    filter:grayscale(1);
+}
+
+img#down{
+    filter:grayscale(1);
+}
+
+img#up:hover{
+    filter: none;
+    cursor: pointer;
+}
+
+img#down:hover{
+    filter: none;
+    cursor: pointer;
 }

@@ -14,15 +14,15 @@
             <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&controls=0" frameborder="0"></iframe>
             <div class="controls">
                 <div id="page_controls">
-                    <img id="home" src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/home-outline.svg">
-                    <img id="recents" src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/clock-time-four-outline.svg">
-                    <img id="trend" src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/trending-up.svg">
-                    <img id="pref" src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/heart-outline.svg">
+                    <a href="hw1.php"><img id="home" src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/home-outline.svg"></a>
+                    <a><img id="recents" src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/clock-time-four-outline.svg"></a>
+                    <a><img id="trend" src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/trending-up.svg"></a>
+                    <a><img id="pref" src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/heart-outline.svg"></a>
                 </div>
                 <div id="interact">
                     <div id="feedback">
-                        <img id="up">
-                        <img id="down">
+                        <img id="up" src="https://raw.githubusercontent.com/Caggegi/HW1/main/img/icons/arrowUP.svg">
+                        <img id="down" src="https://raw.githubusercontent.com/Caggegi/HW1/main/img/icons/arrowDOWN.svg">
                         <h3>Creator</h3>
                     </div>
                     <div>

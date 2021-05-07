@@ -67,3 +67,18 @@ input#signup:hover{
     background-color: #333333;
     color: white;
 }
+
+main div.form_container div#close_div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main div.form_container div#close_div a img#close{
+    height: 2rem;
+    border-radius: 100%;
+}
+
+main div.form_container div#close_div a img#close:hover{
+    background-color: rgba(255, 255, 255, 0.3);
+}

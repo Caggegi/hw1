@@ -14,19 +14,24 @@
                 <img src="https://hackernoon.com/hn-images/1*5tInCLyrwLR7g3pdqXlN8A.gif">
             </div>
             <div class="form_container">
-            <h1>Sign up</h1>
-            <form>
-                <div id="name_surname">
-                    <input type="text" placeholder="Name"></input>
-                    <input type="text" placeholder="Surname"></input>
+                <div id="close_div">
+                    <h1>Sign up</h1>
+                    <a href="hw1.php">
+                        <img id="close" src="img/icons/close.svg">
+                    </a>
                 </div>
-                <div id="other">
-                    <input type="text" placeholder="Email"></input>
-                    <input type="password" placeholder="Password"></input>
-                    <input type="password" placeholder="Confirm password"></input>
-                    <input type="submit" id="signup" value="Sign Up"></input>
-                </div>
-            </form>
+                <form>
+                    <div id="name_surname">
+                        <input type="text" placeholder="Name"></input>
+                        <input type="text" placeholder="Surname"></input>
+                    </div>
+                    <div id="other">
+                        <input type="text" placeholder="Email"></input>
+                        <input type="password" placeholder="Password"></input>
+                        <input type="password" placeholder="Confirm password"></input>
+                        <input type="submit" id="signup" value="Sign Up"></input>
+                 </div>
+                </form>
             </div>
         </main>
     </body>
