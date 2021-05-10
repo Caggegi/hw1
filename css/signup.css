@@ -82,3 +82,41 @@ main div.form_container div#close_div a img#close{
 main div.form_container div#close_div a img#close:hover{
     background-color: rgba(255, 255, 255, 0.3);
 }
+
+div#radio_buttons{
+    display:flex;
+    align-items: center;
+}
+
+div#radio_buttons input{
+    appearance: none;
+    background-color: #444444;
+    border: 2px solid #444444;
+    font-size: 2px;
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+}
+
+div#radio_buttons input:checked{
+    appearance: none;
+    background-color: #1f1f1f;
+    border: 2px solid #fff;
+}
+
+div.error{
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid rgb(255, 0, 0);
+    background-color: rgba(255, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center; 
+    padding: 2px 20px;  
+}
+
+div.hidden{
+    display:none;
+}
