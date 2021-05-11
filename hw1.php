@@ -9,6 +9,11 @@
     if(isset($_SESSION["pic"]))  
         $profile = $_SESSION["pic"];
     else $profile = "https://raw.githubusercontent.com/Caggegi/mhw3/main/img/icons/account-circle-outline.svg";
+    if(isset($_SESSION["tipo"])){
+        echo "<form><input type='hidden' value='".$_SESSION['tipo']."' id='session_type'></input></form>";
+    }  else{
+        echo "<form><input type='hidden' value='none' id='session_type'></input></form>";
+    }
 ?>
 
 
@@ -28,6 +33,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
         <script src="js/contents.js " defer></script>
         <script src="js/script.js" defer></script>
+        <script src="js/sub_loader.js" defer></script>
     </head>
     <body>
         <div class="menu_priority hide"></div>
@@ -52,7 +58,7 @@
                         <input type='text' placeholder='Email' id='current_description'></input>
                         <?php
                             if(isset($_SESSION['hash'])){
-                                echo "<a href='logout.php'>Log Out</a>";
+                                echo "<a href='php/logout.php'>Log Out</a>";
                             } else{
                                 echo "<a href='signup.php'>Log In</a>";
                             }
@@ -118,21 +124,7 @@
                         <img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/account-multiple-check-outline.svg" class="mobile">
                         <h4>Iscrizioni</h4>
                     </div>
-                    <div class="subscription">
-                        <img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/others/profile.png">
-                        <h5>Creator 1</h5>
-                    </div>
-                    <div class="subscription">
-                        <img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/others/profile2.jpg">
-                        <h5>Creator 2</h5>
-                    </div>
-                    <div class="subscription">
-                        <img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/others/profile3.jpg">
-                        <h5>Creator 3</h5>
-                    </div>
-                    <div class="subscription">
-                        <img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/others/profile4.jpg">
-                        <h5>Creator 4</h5>
+                    <div id="sub_container">
                     </div>
                 </div>
             </nav>

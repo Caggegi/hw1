@@ -316,7 +316,7 @@ function saveIconMenu(){
     formdata.append("email", Email);
     formdata.append("image", PPic);
 
-    fetch("accountDetails.php", {
+    fetch("php/accountDetails.php", {
         method:'post',
         body: formdata
     }).then(OnSaveResponse).then(onSaveJson);

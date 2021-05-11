@@ -68,7 +68,7 @@ CREATE table segue(
     PRIMARY KEY(spettatore, creator),
     FOREIGN KEY(creator) REFERENCES creator(hash) on delete cascade,
     FOREIGN KEY(spettatore) REFERENCES spettatore(hash) on delete cascade,
-	INDEX s_spettatore(spettatore),
+	  INDEX s_spettatore(spettatore),
     INDEX s_creator(creator));
 
 CREATE table video(
@@ -77,6 +77,7 @@ CREATE table video(
     descrizione varchar(255),
     src varchar(255),
     copertina varchar(255),
+    type varchar(32),
     INDEX index_video(id));
 
 CREATE table playlist(
@@ -93,9 +94,9 @@ CREATE table pubblica(
     FOREIGN KEY(creator) REFERENCES creator(hash) on delete cascade,
     FOREIGN KEY(video) REFERENCES video(id) on update cascade,
     FOREIGN KEY(playlist) REFERENCES playlist(numero) on update cascade,
-	INDEX p_creator(creator),
+	  INDEX p_creator(creator),
     INDEX p_video(video),
-	INDEX p_playlist(playlist));
+	  INDEX p_playlist(playlist));
 
 CREATE table brand(
     marchio varchar(16) PRIMARY KEY,
@@ -108,7 +109,7 @@ CREATE table testimonial(
     FOREIGN KEY(creator) REFERENCES creator(hash) on delete cascade,
     FOREIGN KEY(brand) REFERENCES brand(marchio) on update cascade,
     INDEX t_creator(creator),
-	INDEX t_brand(brand));
+	  INDEX t_brand(brand));
 
 CREATE table video_locale(
     premium int,
@@ -120,7 +121,7 @@ CREATE table video_locale(
     FOREIGN KEY(premium) REFERENCES premium(hash) on delete cascade,
     FOREIGN KEY(video) REFERENCES video(id) on update cascade,
     INDEX vl_video(video),
-	INDEX vl_premium(premium));
+	  INDEX vl_premium(premium));
 
 CREATE table guarda(
     spettatore int,
@@ -129,7 +130,7 @@ CREATE table guarda(
     FOREIGN KEY(spettatore) REFERENCES spettatore(hash) on delete cascade,
     FOREIGN KEY(video) REFERENCES video(id) on delete cascade,
     INDEX g_video(video),
-	INDEX g_spettatore(spettatore));
+	  INDEX g_spettatore(spettatore));
 
 -- creazione delle procedure
 delimiter //
@@ -152,9 +153,10 @@ create procedure chi_segue (IN hash_spettatore int)
   create temporary table follow(
     hash int,
     username varchar(16),
+    profile_pic varchar(255),
     data date);
   insert into follow
-    select c.hash, c.username, s.inizio from segue s join creator c on s.creator = c.hash
+    select c.hash, c.username, c.profile_pic, s.inizio from segue s join creator c on s.creator = c.hash
       where s.spettatore = hash_spettatore;
 	select * from follow;
   end //
@@ -192,7 +194,7 @@ create procedure codice_sconto(IN creator_id int)
 
 create procedure follower_c(IN intrattenitore int, OUT seguaci int)
   begin
-	set seguaci = (select n_follower from creator where hash=intrattenitore);
+	set seguaci = (select n_followers from creator where hash=intrattenitore);
     select seguaci;
   end //
 
@@ -238,13 +240,13 @@ create trigger add_follower
 	after insert on segue
     for each row
 	update creator
-        set n_follower = n_follower+1 where hash = new.creator;
+        set n_followers = n_followers+1 where hash = new.creator;
 
 create trigger remove_follower
 	after delete on segue
     for each row
 	update creator
-        set n_follower = n_follower-1 where hash = old.creator;
+        set n_followers = n_followers-1 where hash = old.creator;
 
 delimiter //
 create trigger is_premium

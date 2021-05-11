@@ -167,8 +167,6 @@
                         }
                     ?>
                 <div id="error" class="error hidden">
-                    <h3>Errore</h3>
-                    
                 </div>
                 <div id="close_div">
                     <h1>Log In</h1>
