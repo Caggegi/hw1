@@ -1,5 +1,6 @@
 <?php
     class User{
+            private $hash;
             private $name;
             private $surname;
             private $type;
@@ -7,12 +8,25 @@
             private $username;
             private $password;
             private $email;
-            private $bio;
+            private $year;
 
-            function __construct(){}
+            public function __construct(int $hash, string $nome, string $cognome, string $tipo, string $user, 
+                string $psw, string $mail, int $anno){
+                    $this->hash = hash;
+                    $this->name = nome;
+                    $this->surname = cognome;
+                    $this->type = tipo;
+                    $this->username = user;
+                    $this->password = psw;
+                    $this->email = mail;
+                    $this->year = anno;
+            }
 
             public function displayName(){
                 echo $this->name;
+            }
+            public function displayYear(){
+                echo $this->year;
             }
             public function displaySurname(){
                 echo $this->surname;
@@ -29,9 +43,6 @@
             public function displayEmail(){
                 echo $this->email;
             }
-            public function displayBio(){
-                echo $this->bio;
-            }
             public function displayPassword(){
                 echo $this->password;
             }
@@ -42,9 +53,6 @@
             public function setSurname($value){
                 $this->surname = $value;
             }
-            public function setType($value){
-                $this->type = $value;
-            }
             public function setProfilePic($value){
                 $this->profile_pic = $value;
             }
@@ -53,9 +61,6 @@
             }
             public function setEmail($value){
                 $this->email = $value;
-            }
-            public function setBio($value){
-                $this->bio = $value;
             }
             public function setPassword($value){
                 $this->password = $value;

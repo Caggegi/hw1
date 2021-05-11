@@ -1,7 +1,14 @@
 <?php
-    $user="Default Username";
-    $bio="Default Desription";
-    $profile="https://raw.githubusercontent.com/Caggegi/mhw3/main/img/icons/account-circle-outline.svg";
+    session_start();
+    if(isset($_SESSION["nome"]) && isset($_SESSION["cognome"]))
+        $user = $_SESSION["nome"]." ".$_SESSION["cognome"];
+    else $user = "Welcome User";
+    if(isset($_SESSION["mail"]))  
+        $bio = $_SESSION["mail"];
+    else $bio = "Login now!";
+    if(isset($_SESSION["pic"]))  
+        $profile = $_SESSION["pic"];
+    else $profile = "https://raw.githubusercontent.com/Caggegi/mhw3/main/img/icons/account-circle-outline.svg";
 ?>
 
 
@@ -41,9 +48,15 @@
                 <div class="current">
                     <img id="current_picture">
                     <div>
-                        <input type="text" placeholder="Name" id="current_name"></input>
-                        <input type="text" placeholder="description" id="current_description"></input>
-                        <a href="signup.php">Sign Up</a>
+                        <input type='text' placeholder='Name' id='current_name'></input>
+                        <input type='text' placeholder='Email' id='current_description'></input>
+                        <?php
+                            if(isset($_SESSION['hash'])){
+                                echo "<a href='logout.php'>Log Out</a>";
+                            } else{
+                                echo "<a href='signup.php'>Log In</a>";
+                            }
+                        ?>
                     </div>
                 </div>
                 <h2>Seleziona</h2>

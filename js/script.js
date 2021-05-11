@@ -299,14 +299,37 @@ function changePic(event){
 }
 
 function saveIconMenu(){
+    const Nome_Cognome = document.querySelector("input#current_name").value;
+    const Email = document.querySelector("input#current_description").value;
+    const PPic = document.querySelector("div.icon_menu div.m_body div.current img#current_picture").src;
     document.querySelector("div.menu_priority").classList.add("hide");
     document.querySelector("div.icon_menu").classList.add("hide");
-    document.querySelector("header div#info h3").textContent = document.querySelector("input#current_name").value;
-    document.querySelector("header div#info p").textContent = document.querySelector("input#current_description").value;
-    document.querySelector("header div#info img").src = document.querySelector("div.icon_menu div.m_body div.current img#current_picture").src;
-    document.querySelector("header div#search div img.mobile").src = document.querySelector("div.icon_menu div.m_body div.current img#current_picture").src;
+    document.querySelector("header div#info h3").textContent = Nome_Cognome;
+    document.querySelector("header div#info p").textContent = Email;
+    document.querySelector("header div#info img").src = PPic
+    document.querySelector("header div#search div img.mobile").src = PPic;
     document.querySelector("body").classList.remove("no-scroll");
+
+    //mando i cambiamenti al database
+    const formdata = new FormData();
+    formdata.append("nome", Nome_Cognome);
+    formdata.append("email", Email);
+    formdata.append("image", PPic);
+
+    fetch("accountDetails.php", {
+        method:'post',
+        body: formdata
+    }).then(OnSaveResponse).then(onSaveJson);
 }
+
+function OnSaveResponse(response){
+    return response.json();
+}
+
+function onSaveJson(json){
+    console.log(json);
+}
+
 function closeIconMenu(){
     document.querySelector("div.menu_priority").classList.add("hide");
     document.querySelector("div.icon_menu").classList.add("hide");
@@ -324,12 +347,10 @@ function onResponse(response){
 }
 
 function onError(error){
-    console.log(error);
     header.style.backgroundImage = "url('https://raw.githubusercontent.com/Caggegi/HW1/main/img/default.jpg')";
 }
 
 function onError2(error){
-    console.log(error);
 }
 
 const unsplash_key = "TiyMZxRbh4vc2ZZCNtHMe7FSYjMU2uGn2iryP_wb2n4";
@@ -341,14 +362,12 @@ changeProfilePicture.addEventListener("submit", reloadPicCategories);
 function reloadPicCategories(event){
     event.preventDefault();
     const category = document.querySelector("form#choose_category input#category");
-    console.log("la categoria scelta è: "+ category.value);
     showUnsplashed(category.value);
 }
 
 function showUnsplashed(category){
     document.querySelector("div.icon_menu div.m_body div.pick").innerHTML = "";
     if(category === ""){
-        console.log("foto random");
         fetch(unsplash+"/search/photos/?page="+Math.floor(Math.random()*9)+1+"&query=pattern"
                                       +"&orientation=squarish&content_filter=high&per_page=5",{
             method:"get",
@@ -358,7 +377,6 @@ function showUnsplashed(category){
         })
         .then(onResponseUnsplashed, onError2).then(unsplashJson);
     } else{
-        console.log(category);
         fetch(unsplash+"/search/photos/?page=1&query="+category+"&orientation=squarish&content_filter=high&per_page=5",{
             method:"get",
             headers:{
@@ -370,12 +388,10 @@ function showUnsplashed(category){
 }
 
 function onResponseUnsplashed(response){
-    console.log(response);
     return response.json();
 }
 
 function unsplashJson(json){
-    console.log(json);
     const risultati = json.results;
     if(risultati.length===0){
         const no_items = document.createElement("p");
