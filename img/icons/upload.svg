@@ -42,13 +42,13 @@
      showgrid="false"
      inkscape:zoom="22.416667"
      inkscape:cx="12"
-     inkscape:cy="12"
+     inkscape:cy="8.4312268"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg4" />
   <path
-     d="M2 12H4V17H20V12H22V17C22 18.11 21.11 19 20 19H4C2.9 19 2 18.11 2 17V12M12 2L6.46 7.46L7.88 8.88L11 5.75V15H13V5.75L16.13 8.88L17.55 7.45L12 2Z"
+     d="M 4.5,11.625 H 6 v 3.75 h 12 v -3.75 h 1.5 v 3.75 c 0,0.8325 -0.6675,1.5 -1.5,1.5 H 6 c -0.825,0 -1.5,-0.6675 -1.5,-1.5 v -3.75 M 12,4.125 7.845,8.22 8.91,9.285 11.25,6.9375 v 6.9375 h 1.5 V 6.9375 l 2.3475,2.3475 1.065,-1.0725 z"
      id="path2"
-     style="fill:#0f868e;fill-opacity:1" />
+     style="fill:#108b94;fill-opacity:1;stroke-width:0.75" />
 </svg>

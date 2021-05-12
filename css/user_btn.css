@@ -35,8 +35,8 @@ div.upload_button{
     margin: 16px 8px 16px 5px;
 }
 
-div.save_button:hover{
-    background-image: url("img/icons/upload.svg");
+div.upload_button:hover{
+    background-image: url("https://raw.githubusercontent.com/Caggegi/HW1/main/img/icons/upload.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
