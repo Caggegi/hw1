@@ -6,7 +6,7 @@ CREATE table spettatore(
 	hash int auto_increment PRIMARY KEY,
     name varchar(32),
     surname varchar(32),
-	username varchar(32),
+  	username varchar(32),
     email varchar(64),
     password varchar(64),
     profile_pic varchar(255),
@@ -17,7 +17,7 @@ CREATE table creator(
 	hash int auto_increment PRIMARY KEY,
     name varchar(32),
     surname varchar(32),
-	username varchar(32),
+	  username varchar(32),
     email varchar(64),
     password varchar(64),
     profile_pic varchar(255),
@@ -34,11 +34,12 @@ CREATE table premium(
     INDEX index_premium(hash));
 
 CREATE table feedback(
-    hash int,
-    numero int,
+    spettatore int,
+    video int,
     tipo boolean,
-    PRIMARY KEY(hash,numero),
-    FOREIGN KEY(hash) REFERENCES spettatore(hash) on update cascade,
+    PRIMARY KEY(spettatore, video),
+    FOREIGN KEY(spettatore) REFERENCES spettatore(hash) on update cascade,
+    FOREIGN KEY(video) REFERENCES video(id) on update cascade,
     INDEX f_spettatore(hash));
 
 CREATE table abbonamento(
@@ -58,7 +59,7 @@ CREATE table abbonamenti_precedenti(
     PRIMARY KEY(premium, inizio),
     FOREIGN KEY(premium) REFERENCES premium(hash) on update cascade,
     FOREIGN KEY(creator) REFERENCES creator(hash) on update cascade,
-	INDEX ap_premium(premium),
+	  INDEX ap_premium(premium),
     INDEX ap_creator(creator));
 
 CREATE table segue(
@@ -72,56 +73,15 @@ CREATE table segue(
     INDEX s_creator(creator));
 
 CREATE table video(
-    id int auto_increment PRIMARY KEY,
     titolo varchar(20),
-    descrizione varchar(255),
-    src varchar(255),
-    copertina varchar(255),
-    type varchar(32),
-    INDEX index_video(id));
-
-CREATE table playlist(
-    numero int auto_increment PRIMARY KEY,
-    descrizione varchar(255),
-    INDEX index_playlist(numero));
-
-CREATE table pubblica(
+    immagine varchar(255),
     creator int,
-    playlist int,
-    video int,
-    data date,
-    PRIMARY KEY(creator, video, playlist),
+    descrizione varchar(255),
+    id int auto_increment PRIMARY KEY,
+    type varchar(32),
+    src varchar(255),
     FOREIGN KEY(creator) REFERENCES creator(hash) on delete cascade,
-    FOREIGN KEY(video) REFERENCES video(id) on update cascade,
-    FOREIGN KEY(playlist) REFERENCES playlist(numero) on update cascade,
-	  INDEX p_creator(creator),
-    INDEX p_video(video),
-	  INDEX p_playlist(playlist));
-
-CREATE table brand(
-    marchio varchar(16) PRIMARY KEY,
-    capitale decimal,
-    INDEX index_marchio(marchio));
-
-CREATE table testimonial(
-    creator int PRIMARY KEY,
-    brand varchar(16) UNIQUE,
-    FOREIGN KEY(creator) REFERENCES creator(hash) on delete cascade,
-    FOREIGN KEY(brand) REFERENCES brand(marchio) on update cascade,
-    INDEX t_creator(creator),
-	  INDEX t_brand(brand));
-
-CREATE table video_locale(
-    premium int,
-    video int,
-    peso int,
-    qualita varchar(5),
-    n_download int,
-    PRIMARY KEY(premium, video, n_download),
-    FOREIGN KEY(premium) REFERENCES premium(hash) on delete cascade,
-    FOREIGN KEY(video) REFERENCES video(id) on update cascade,
-    INDEX vl_video(video),
-	  INDEX vl_premium(premium));
+    INDEX index_video(id));
 
 CREATE table guarda(
     spettatore int,
@@ -139,7 +99,7 @@ create procedure tendenza(IN soglia int)
   begin
 	drop table if exists in_tendenza;
     create temporary table in_tendenza(
-		id_video int,
+		    id_video int,
         video varchar(16),
         views int);
 	insert into in_tendenza

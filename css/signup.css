@@ -11,6 +11,7 @@ main{
     padding: 0px;
     display: flex;
     align-items: center;
+    height: 100vh;
 }
 
 main div.left_image{
@@ -138,6 +139,33 @@ div.btns{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+@media (max-width: 950px) {
+    
+main div.left_image{
+    display: none;
+}
+
+main div.form_container{
+    width:100vw;
+    height: 100vh;
+    margin: 5%;
+}
+
+div#name_surname input{
+    width: 90%;
+}
+div#other input[type=text]{
+    width: 90%;
+}
+div#other input[type=password]{
+    width: 90%;
+}
+div#other input[type=submit]{
+    width: 100%;
+}
+
 }
 
 div.hidden{

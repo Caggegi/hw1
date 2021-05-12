@@ -61,9 +61,11 @@ header div.relative img#profile{
 
 div.upload{
     width: 66%;
-    height: 33%;
+    height: 66%;
     position: fixed;
-    top: 33%;
+    top: calc(33%/2);
     left: 16.5%;
-    background-color: #999999;
+    background-color: #1d1d1d;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px black;
 }

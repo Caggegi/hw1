@@ -1,8 +1,18 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['tipo']) || $_SESSION['tipo']=='spectator'){
+        session_destroy();
+        header("Location: signup.php");
+        exit;
+    }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
     <meta charset="UTF-8"/>
         <link href="css/upload.css" rel="stylesheet"/>
+        <link href="css/user_btn.css" rel="stylesheet"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>VideoTube Upload</title>
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -12,12 +22,19 @@
         <div class="menu_priority"></div>
         <header class="header">
             <div class="relative">
-                <img id="profile" src="https://raw.githubusercontent.com/Caggegi/mhw3/main/img/icons/account-circle-outline.svg"/>
+                <a href="hw1.php"><img src="img/icons/arrow-left.svg"/></a>
+                <?php
+                    echo "<img id='profile' src='".$_SESSION['pic']."'/>";
+                ?>
                 <h2>VideoTube Upload</h2>
                 <img id="plus_button" src="img/icons/plus.svg"/>
             </div>
         </header>
         <div class="upload">
+            <div id="popup_topbar">
+                <div class="close_button"></div>
+                <div class="upload_button"></div>
+            </div>
         </div>
         <main>
             <div class="row">

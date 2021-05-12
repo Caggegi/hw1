@@ -22,6 +22,7 @@
     <head>
         <meta charset="UTF-8"/>
         <link href="css/hw1.css" rel="stylesheet"/>
+        <link href="css/user_btn.css" rel="stylesheet"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>VideoTube o46002042</title>
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -118,12 +119,12 @@
                         <img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/heart-outline.svg" class="mobile">
                         <h4>Preferiti</h4>
                     </div>
-                <div>
                     <div class="nav_button">
                         <img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Dark/account-multiple-check-outline.svg" class="desktop">
                         <img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/account-multiple-check-outline.svg" class="mobile">
                         <h4>Iscrizioni</h4>
                     </div>
+                <div>
                     <div id="sub_container">
                     </div>
                 </div>
