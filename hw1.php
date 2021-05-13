@@ -11,6 +11,10 @@
     else $profile = "https://raw.githubusercontent.com/Caggegi/mhw3/main/img/icons/account-circle-outline.svg";
     if(isset($_SESSION["tipo"])){
         echo "<form><input type='hidden' value='".$_SESSION['tipo']."' id='session_type'></input></form>";
+        if($_SESSION['tipo']=='creator'){
+            header("Location: upload.php");
+            exit;
+        }
     }  else{
         echo "<form><input type='hidden' value='none' id='session_type'></input></form>";
     }
@@ -66,8 +70,8 @@
                         ?>
                     </div>
                 </div>
-                <h2>Seleziona</h2>
-                <div class="pick">
+                <h2 class="desktop">Seleziona</h2>
+                <div class="pick desktop">
                     
                 </div>
             </div>
@@ -81,7 +85,7 @@
                 <div>
                     <img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/magnify.svg"/>
                     <?php
-                        echo '<img class="mobile" src="'.$profile.'"/>';
+                        echo '<img id="mobile_pic" class="mobile" src="'.$profile.'"/>';
                     ?>        
                 </div>
             </div>

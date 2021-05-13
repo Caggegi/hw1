@@ -78,7 +78,7 @@ CREATE table video(
     creator int,
     descrizione varchar(255),
     id int auto_increment PRIMARY KEY,
-    type varchar(32),
+    tipe varchar(32),
     src varchar(255),
     FOREIGN KEY(creator) REFERENCES creator(hash) on delete cascade,
     INDEX index_video(id));

@@ -284,15 +284,17 @@ function create_card(sezione, elemento, preferiti){
 }
 
 document.querySelector("header div#info").addEventListener("click", changePic);
+document.querySelector("img#mobile_pic").addEventListener("click", changePic);
 document.querySelector("div.icon_menu div.m_header div.window_buttons div.save_button").addEventListener("click", saveIconMenu);
 document.querySelector("div.icon_menu div.m_header div.window_buttons div.close_button").addEventListener("click", closeIconMenu);
 
 function changePic(event){
     document.querySelector("div.menu_priority").classList.remove("hide");
     const menu = document.querySelector("div.icon_menu");
-    menu.querySelector("input#current_name").value = event.currentTarget.querySelector("h3").textContent;
-    menu.querySelector("input#current_description").value = event.currentTarget.querySelector("p").textContent;
-    menu.querySelector("img#current_picture").src = event.currentTarget.querySelector("img").src;
+    const tg = document.querySelector("header div#info div#account");
+    menu.querySelector("input#current_name").value = tg.querySelector("h3").textContent;
+    menu.querySelector("input#current_description").value = tg.querySelector("p").textContent;
+    menu.querySelector("img#current_picture").src = tg.querySelector("img").src;
     menu.classList.remove("hide");
     document.querySelector("body").classList.add("no-scroll");
     showUnsplashed("");
@@ -414,6 +416,7 @@ function append_candidate(src){
     const image = document.createElement("img");
     image.src = src;
     image.classList.add("picture_candidate");
+    image.classList.add("desktop");
     image.addEventListener("click",changeCurrentPic);
     section.appendChild(image);
 }

@@ -55,7 +55,7 @@
                     $row = mysqli_fetch_object(mysqli_query($connection, $query));
                     setUserSession($row->hash, $_POST['name'],$_POST['surname'],$_POST['type'],$_POST['username'],$_POST['password'],
                         $_POST['email'],date('Y'), $row->profile_pic);
-                    header("Location: hw1.php");
+                    header("Location: upload.php");
                     exit;
                 }
             }
@@ -103,7 +103,7 @@
                     if($ok){
                         $errore = "wrong_psw";
                     } else{
-                        header("Location: hw1.php");
+                        header("Location: upload.php");
                         exit;
                     }
                 }
