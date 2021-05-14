@@ -18,6 +18,7 @@ function cancelUpload(){
         i.value = "";
     }
     document.querySelector("body").classList.remove("no-scroll");
+    document.querySelector("p#errore_upload").classList.add("hidden");
 }
 
 function startProcedureUpload(){
@@ -33,20 +34,52 @@ function doUpload(){
     postVideo.append("copertina", up_form.copertina.value);
     postVideo.append("descrizione", up_form.descrizione.value);
     postVideo.append("src", up_form.src.value);
+    postVideo.append("tipo", up_form.type.value);
 
-    fetch("upload.php", {
+    fetch("php/video_poster.php", {
         method:'post',
         body: postVideo
-    });
+    }).then(onJsonResponse).then(onUploadJson);
 
-    cancelUpload();
+}
+
+function onJsonResponse(response){
+    return response.json();
+}
+
+function onUploadJson(json){
+    console.log(json.risposta)
+    if(json.risposta == 'video_caricato'){
+        let VideoRow = document.createElement("div");
+        VideoRow.classList.add("row");
+        let imageC = document.createElement("img");
+        imageC.src=json.copertina;
+        let row_div = document.createElement("div");
+        let row_title = document.createElement("h2");
+        row_title.textContent = json.titolo;
+        let row_des = document.createElement("p");
+        row_des.textContent = json.descrizione;
+        row_div.appendChild(row_title);
+        row_div.appendChild(row_des);
+        VideoRow.appendChild(imageC);
+        VideoRow.appendChild(row_div);
+        document.querySelector("main").appendChild(VideoRow);
+        cancelUpload();
+    }
+    else{
+        document.querySelector("p#errore_upload").classList.remove("hidden");
+        const inputs = document.querySelectorAll("div.text_input input");
+        for(i of inputs){
+            i.value = "";
+        }
+    }
 }
 
 function showPicMenu(){
     const menu = document.querySelector("div.icon_menu");
     menu.querySelector("input#current_name").value = document.querySelector("input#name_surname").value;
     menu.querySelector("input#current_description").value = document.querySelector("input#email").value;
-    menu.querySelector("img#current_picture").src = document.querySelector("input#pic").value;
+    menu.querySelector("img#current_picture").src = profile.src;
     menu.classList.remove("hidden");
     document.querySelector("body").classList.add("no-scroll");
     showUnsplashed("");

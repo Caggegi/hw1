@@ -71,7 +71,35 @@ function signup_login(event){
                 string.textContent = "Assicurati che la password di conferma corrisponda con quella digitata";
                 error.appendChild(string);
                 error.classList.remove("hidden");
-            } else error.classList.add("hidden");
+            } else {
+                if(modulo.password.value.length<8){
+                    event.preventDefault();
+                    error.innerHTML="";
+                    const title = document.createElement("h3");
+                    title.textContent = "Le password è troppo corta";
+                    error.appendChild(title);
+                    const string = document.createElement("p");
+                    string.textContent = "Assicurati che la password abbia più di 8 caratteri";
+                    error.appendChild(string);
+                    error.classList.remove("hidden");
+                }
+                else{
+                    if(/[A-Za-z]+/.test(modulo.password.value) && 
+                        /[0-9]+/.test(modulo.password.value) && /[^a-z0-9]+/i.test(modulo.password.value)){
+                        error.classList.add("hidden");
+                    }else{
+                        event.preventDefault();
+                        error.innerHTML="";
+                        const title = document.createElement("h3");
+                        title.textContent = "Le password è troppo corta";
+                        error.appendChild(title);
+                        const string = document.createElement("p");
+                        string.textContent = "La password deve contenere maiuscole e minuscole, numeri e caratteri speciali";
+                        error.appendChild(string);
+                        error.classList.remove("hidden");
+                    }
+                }
+            }
         }
     } else{ //è stato scelto log in;
         if(modulo.username.value.length === 0)

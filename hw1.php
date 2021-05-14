@@ -168,7 +168,7 @@
                 <a href="https://github.com/Caggegi/hw1" target="about:blank"><img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/github.svg"></a>
             </div>
             <div>
-                <p>Questo sito web è stato creato da Rosario Caggegi o46002042 usando HTML e CSS</p>
+                <p>Questo sito web è stato creato da Rosario Caggegi o46002042 usando PHP, JavaScript, MySQL, HTML e CSS</p>
             </div>
         </footer>
     </body>

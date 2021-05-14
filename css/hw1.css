@@ -143,7 +143,7 @@ nav div.nav_button{
 nav div.nav_button:hover{
     color: #101010;
     font-style: oblique;
-    background-color: white;
+    background-color: rgb(100, 255, 0);
 }
 
 
@@ -155,7 +155,7 @@ div#sub_container div.subscription{
     justify-content: flex-start;
 }
 div#sub_container div.subscription img{
-    border: 2px solid rgb(255, 255, 255);
+    background-color: rgb(100, 255, 0);
     margin: 8px;
     border-radius: 100%;
 }
@@ -204,7 +204,6 @@ div.show-case div.card div img{
     width: 24px;
     margin: 2px;
 }
-
 
 .card h5, .card p{
     margin: 4px;
@@ -334,15 +333,12 @@ div.icon_menu div.m_body div.current div a{
 }
 
 div.icon_menu div.m_body div.current div a:hover{
-    background-color: rgb(20, 20, 20);
+    background-color: rgba(100, 255, 0, 0.5);
 }
 
 div.icon_menu div.m_body div.current div input{
     border: 0px;
     width: 100%;
-    /*
-    background-color: rgb(245, 245, 245);
-    */
     color: white;
     background-color: rgb(34, 34, 34);
     text-align: left;
@@ -598,6 +594,21 @@ div.menu_priority{
         display: flex;
     }
 
+}
+
+a.linker:link{
+    text-decoration: none;
+    color:white;
+}
+
+a.linker:visited{
+    text-decoration: none;
+    color:white;
+}
+
+a.linker:active{
+    text-decoration: none;
+    color:white;
 }
 
 .no-scroll{

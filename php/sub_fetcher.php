@@ -10,8 +10,7 @@
                 $lista[] = array('hash'=>$row->hash, 'username'=>$row->username, 'profile_pic'=>$row->profile_pic);
             }
             echo json_encode($lista);
-        } else{
-            echo json_encode("{'spectator':'false'}");
+            mysqli_close($connection);
         }
     }
 ?>

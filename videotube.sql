@@ -32,6 +32,18 @@ CREATE table premium(
     tipo varchar(16),
     FOREIGN KEY(hash) REFERENCES spettatore(hash) on delete cascade,
     INDEX index_premium(hash));
+  
+CREATE table video(
+    titolo varchar(20),
+    immagine varchar(255),
+    creator int,
+    descrizione varchar(255),
+    id int auto_increment PRIMARY KEY,
+    tipo varchar(32),
+    src varchar(255),
+    pubblicazione date,
+    FOREIGN KEY(creator) REFERENCES creator(hash) on delete cascade,
+    INDEX index_video(id));
 
 CREATE table feedback(
     spettatore int,
@@ -40,7 +52,7 @@ CREATE table feedback(
     PRIMARY KEY(spettatore, video),
     FOREIGN KEY(spettatore) REFERENCES spettatore(hash) on update cascade,
     FOREIGN KEY(video) REFERENCES video(id) on update cascade,
-    INDEX f_spettatore(hash));
+    INDEX f_spettatore(spettatore));
 
 CREATE table abbonamento(
     premium int PRIMARY KEY,
@@ -72,16 +84,6 @@ CREATE table segue(
 	  INDEX s_spettatore(spettatore),
     INDEX s_creator(creator));
 
-CREATE table video(
-    titolo varchar(20),
-    immagine varchar(255),
-    creator int,
-    descrizione varchar(255),
-    id int auto_increment PRIMARY KEY,
-    tipe varchar(32),
-    src varchar(255),
-    FOREIGN KEY(creator) REFERENCES creator(hash) on delete cascade,
-    INDEX index_video(id));
 
 CREATE table guarda(
     spettatore int,
@@ -91,7 +93,7 @@ CREATE table guarda(
     FOREIGN KEY(video) REFERENCES video(id) on delete cascade,
     INDEX g_video(video),
 	  INDEX g_spettatore(spettatore));
-
+/*
 -- creazione delle procedure
 delimiter //
 
@@ -106,6 +108,9 @@ create procedure tendenza(IN soglia int)
 		select id_video, video, views from visual_video where views>=soglia;
 	select * from in_tendenza;
   end//
+*/
+
+delimiter //
 
 create procedure chi_segue (IN hash_spettatore int)
   begin
@@ -121,6 +126,9 @@ create procedure chi_segue (IN hash_spettatore int)
 	select * from follow;
   end //
 
+delimiter ;
+
+/*
 
 create procedure abbonamenti_fatti (IN hash_premium int)
   begin
@@ -172,13 +180,14 @@ create procedure seguaci_anno(IN intrattenitore int)
 
 
 delimiter ;
+*/
 
 -- creazione viste
 
 create view visual_video as
   select video as id_video, titolo as video, count(spettatore) as views from video join guarda
     on video.id = guarda.video group by video.id order by views desc;
-
+/*
 create view feedback_lasciati as
 	select s.hash as hash, s.username as spettatore, count(f.numero) as feedback
 	from spettatore s join  feedback f on s.hash = f.hash group by hash;
@@ -195,7 +204,7 @@ create trigger aggiorna_abbonamenti
     for each row
 		insert into abbonamenti_precedenti values (old.premium, old.creator, old.inizio, current_date());
 
-
+*/
 create trigger add_follower
 	after insert on segue
     for each row
@@ -207,7 +216,7 @@ create trigger remove_follower
     for each row
 	update creator
         set n_followers = n_followers-1 where hash = old.creator;
-
+/*
 delimiter //
 create trigger is_premium
 	before insert on abbonamento
@@ -255,3 +264,4 @@ create trigger controllo_costi
 		end if;
 	end //
 delimiter ;
+*/

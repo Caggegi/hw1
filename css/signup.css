@@ -109,7 +109,7 @@ div#radio_buttons input{
 div#radio_buttons input:checked{
     appearance: none;
     background-color: #1f1f1f;
-    border: 2px solid #fff;
+    border: 2px solid rgb(100, 255, 0);
 }
 
 div.error{

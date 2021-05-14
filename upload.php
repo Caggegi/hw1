@@ -11,18 +11,6 @@
             echo "<input type='hidden' value='".$_SESSION['mail']."' id='email'></input>";
         }
     }
-
-    if(isset($_POST['titolo']) && isset($_POST['copertina']) && isset($_POST['descrizione']) && isset($_POST['src'])){
-        if(strpos($_POST['src'],"youtube") != -1){
-            $start_id = 2+strpos($_POST['src'],"v=");
-            $end_id = strpos($_POST['src'],"&");
-            if($end_id == -1){
-                $end_id = 11;
-            }
-        }
-
-    }
-
 ?>
 
 <!DOCTYPE html>
@@ -66,6 +54,7 @@
                     </div>
                 </div>    
             </form>
+            <p id="errore_upload" class="hidden">Si è verificato un errore, controlla i dati immessi</p>
         </div>
         <div class="icon_menu hidden">
             <div class="m_header">
@@ -110,76 +99,16 @@
         </header>
         <main>
             <h2 class="mobile riepilogo">Riepilogo contenuti:</h2>
-            <div class="row">
-                <img src="https://www.gamelegends.it/wp-content/uploads/2021/01/cyberpunk-2077-Main-Theme.jpg"/>
-                <div>
-                    <h2>Titolo</h2>
-                    <p>Descrizione</p>
-                </div>
-            </div>
-            <div class="row">
-                <img src="https://www.gamelegends.it/wp-content/uploads/2021/01/cyberpunk-2077-Main-Theme.jpg"/>
-                <div>
-                    <h2>Titolo</h2>
-                    <p>Descrizione</p>
-                </div>
-            </div>
-            <div class="row">
-                <img src="https://www.gamelegends.it/wp-content/uploads/2021/01/cyberpunk-2077-Main-Theme.jpg"/>
-                <div>
-                    <h2>Titolo</h2>
-                    <p>Descrizione</p>
-                </div>
-            </div>
-            <div class="row">
-                <img src="https://www.gamelegends.it/wp-content/uploads/2021/01/cyberpunk-2077-Main-Theme.jpg"/>
-                <div>
-                    <h2>Titolo</h2>
-                    <p>Descrizione</p>
-                </div>
-            </div>
-            <div class="row">
-                <img src="https://www.gamelegends.it/wp-content/uploads/2021/01/cyberpunk-2077-Main-Theme.jpg"/>
-                <div>
-                    <h2>Titolo</h2>
-                    <p>Descrizione</p>
-                </div>
-            </div>
-            <div class="row">
-                <img src="https://www.gamelegends.it/wp-content/uploads/2021/01/cyberpunk-2077-Main-Theme.jpg"/>
-                <div>
-                    <h2>Titolo</h2>
-                    <p>Descrizione</p>
-                </div>
-            </div>
-            <div class="row">
-                <img src="https://www.gamelegends.it/wp-content/uploads/2021/01/cyberpunk-2077-Main-Theme.jpg"/>
-                <div>
-                    <h2>Titolo</h2>
-                    <p>Descrizione</p>
-                </div>
-            </div>
-            <div class="row">
-                <img src="https://www.gamelegends.it/wp-content/uploads/2021/01/cyberpunk-2077-Main-Theme.jpg"/>
-                <div>
-                    <h2>Titolo</h2>
-                    <p>Descrizione</p>
-                </div>
-            </div>
-            <div class="row">
-                <img src="https://www.gamelegends.it/wp-content/uploads/2021/01/cyberpunk-2077-Main-Theme.jpg"/>
-                <div>
-                    <h2>Titolo</h2>
-                    <p>Descrizione</p>
-                </div>
-            </div>
-            <div class="row">
-                <img src="https://www.gamelegends.it/wp-content/uploads/2021/01/cyberpunk-2077-Main-Theme.jpg"/>
-                <div>
-                    <h2>Titolo</h2>
-                    <p>Descrizione</p>
-                </div>
-            </div>
+            <?php
+                $connection = mysqli_connect("localhost", "root", "", "vt") or die(mysqli_connect_error());
+                $query = "SELECT titolo, immagine, descrizione FROM video where creator =".$_SESSION['hash'].";";
+                $res = mysqli_query($connection, $query);
+                while($row = mysqli_fetch_object($res)){
+                    echo "<div class='row'> <img src='".$row->immagine."'>";
+                    echo "<div><h2>".$row->titolo."</h2>";
+                    echo "<p>".$row->descrizione."</p></div></div>";
+                }
+            ?>
         </main>
     </body>
 </html>

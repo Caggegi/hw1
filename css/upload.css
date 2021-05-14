@@ -6,6 +6,10 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+p#errore_upload{
+    margin:10px;
+}
+
 .no-scroll{
     overflow: hidden;
 }
@@ -130,7 +134,7 @@ div#upload_form div.radio_container div input{
 div#upload_form div.radio_container div input:checked{
     appearance: none;
     background-color: #1f1f1f;
-    border: 2px solid #fff;
+    border: 2px solid rgb(100, 255, 0);
 }
 
 div#upload_form div.radio_container div{
@@ -225,20 +229,6 @@ div.icon_menu div.m_body div.current div{
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-}
-
-div.icon_menu div.m_body div.current div a{
-    text-decoration: none;
-    padding: 2px 4px;
-    color: rgb(255, 255, 255);
-    border:1px solid rgb(255, 255, 255);
-    background-color: rgb(34, 34, 34);
-    border-radius: 8px;
-    margin: 2px 0px;
-}
-
-div.icon_menu div.m_body div.current div a:hover{
-    background-color: rgb(20, 20, 20);
 }
 
 div.icon_menu div.m_body div.current div input{
