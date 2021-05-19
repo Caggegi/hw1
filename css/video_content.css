@@ -86,88 +86,90 @@ div#sub_buttons a{
     text-decoration: none;
 }
 
-div.subscribe{
+div.subscribed{
+    margin: 6px;
     background-color: rgb(53, 53, 53);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 6px 0px 0px 6px;
-    border-right: 1px solid rgb(106, 106, 106);
-    padding: 0px 5px;
-    height: 30px;
+    border-radius: 7px;
+    padding: 0px 15px;
+    height: 36px;
+    color: white;
     box-shadow: black 0px 2px 3px;
+    font-weight: normal;
 }
 
 div.subscribe:hover{
-    background-color: rgb(142, 42, 224);
+    background-color: rgb(42, 224, 81);
     cursor: pointer;
 }
 
 div.subscribed:hover{
-    background-color: rgb(53, 53, 53);
+    font-weight: normal;
+    background-color: rgb(27, 27, 27);
+    color: white;
     cursor: pointer;
 }
 
-div.subscribed{
-    background-color: rgb(105, 28, 168);
+div.subscribe{
+    margin: 6px;
+    background-color: rgb(21, 230, 14);
+    color: black;
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 6px 0px 0px 6px;
-    border-right: 1px solid rgb(106, 106, 106);
-    padding: 0px 5px;
-    height: 30px;
+    border-radius: 7px;
+    padding: 0px 15px;
+    height: 36px;
     box-shadow: black 0px 2px 3px;
 }
 
-div.support{
+div.supporting{
+    margin: 6px;
     background-color: rgb(53, 53, 53);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 0px 6px 6px 0px;
-    border-left: 1px solid rgb(106, 106, 106);
-    padding: 0px 5px;
-    height: 30px;
-    box-shadow: black 2px 2px 3px;
+    border-radius: 7px;
+    padding: 0px 15px;
+    height: 36px;
+    color: white;
+    box-shadow: black 0px 2px 3px;
+    font-weight: normal;
 }
 
 div.support:hover{
-    background-color: rgb(60, 123, 206); 
+    background-color: rgb(187, 184, 40);
     cursor: pointer;
 }
 
 div.supporting:hover{
-    background-color: rgb(53, 53, 53);
+    font-weight: normal;
+    background-color: rgb(27, 27, 27);
+    color: white;
     cursor: pointer;
 }
 
-div.supporting{
-    background-color: rgb(22, 81, 158); 
+div.support, div.no-support{
+    margin: 6px;
+    background-color: rgb(230, 226, 3);
+    color: black;
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 0px 6px 6px 0px;
-    border-left: 1px solid rgb(106, 106, 106);
-    padding: 0px 5px;
-    height: 30px;
-    box-shadow: black 2px 2px 3px;
+    border-radius: 7px;
+    padding: 0px 15px;
+    height: 36px;
+    box-shadow: black 0px 2px 3px;
 }
 
-img#up{
-    filter:grayscale(1);
-}
-
-img#down{
-    filter:grayscale(1);
-}
-
-img#up:hover{
-    filter: none;
-    cursor: pointer;
-}
-
-img#down:hover{
-    filter: none;
-    cursor: pointer;
+img#little_ppic{
+    height: 48px;
+    width: 48px;
+    border-radius: 100%;
+    margin: 5px;
+    border: 2px solid white;
 }

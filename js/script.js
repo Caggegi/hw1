@@ -61,28 +61,8 @@ function avviaRicerca(){
     ricerca.splice(0, ricerca.length);
     const barra_di_ricerca = document.querySelector("header div#search input#search");
     const testo = barra_di_ricerca.value;
-    const sezione_ricerca = document.querySelector("section#ricerca div.show-case");
-    sezione_ricerca.innerHTML = '';
-    if(testo!==""){
-        for(let content of video){
-            if(content.titolo.toLowerCase().indexOf(testo.toLowerCase())!==-1
-            || content.creator.toLowerCase().indexOf(testo.toLowerCase())!==-1){
-                ricerca.push(content);
-                create_card(sezione_ricerca, content, true);
-            }
-            }
-        if (ricerca.length!==0){
-            showsearch();
-        } else{
-            hidesearch();
-        }
-    } else{
-        hidesearch();
-    }
-}
-
-function hidesearch(){ 
-    
+    if(testo!=="") showSearch(testo);
+    else showHome();
 }
 
 document.querySelector("header div#info").addEventListener("click", changePic);

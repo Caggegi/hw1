@@ -102,12 +102,12 @@ INSERT INTO creator(hash, name, surname, username, email, password, profile_pic,
          (5, 'Disney Pixar','','Pixar','pixar@disney.com','d1fdc211f5414e6974317921f57c89e9a7c41def55d3fc7befa436efb8ac7c04','https://bit.ly/3ftEuAl',current_date(),'0'),
          (6, 'CGI','','CGI','cgianimated@cgi.com','d1fdc211f5414e6974317921f57c89e9a7c41def55d3fc7befa436efb8ac7c04','https://bit.ly/3ynefo7',current_date(),'0'),
          (7, 'Francesca','Calearo','Madame','sonolamadame@gmail.com','d1fdc211f5414e6974317921f57c89e9a7c41def55d3fc7befa436efb8ac7c04','https://bit.ly/3bzpxMg',current_date(),'0'),
-         (8, 'Andrea','Molteni','Axos','axos.studio@gmail.com','d1fdc211f5414e6974317921f57c89e9a7c41def55d3fc7befa436efb8ac7c04','https://bit.ly/3hzpgfW',current_date(),'0'),
+         (8, 'Andrea','Molteni','Axos','axos.studio@gmail.com','d1fdc211f5414e6974317921f57c89e9a7c41def55d3fc7befa436efb8ac7c04','https://bit.ly/3v1a0MV',current_date(),'0'),
          (9, 'Michele','Salvemini','Caparezza','caparezza@gmail.com','d1fdc211f5414e6974317921f57c89e9a7c41def55d3fc7befa436efb8ac7c04','https://bit.ly/3tYcRVv',current_date(),'0'),
          (10, 'Universe Science Italy','','UniverseScienceItaly','usitaly@cd.com','d1fdc211f5414e6974317921f57c89e9a7c41def55d3fc7befa436efb8ac7c04','https://bit.ly/3ytVsHR',current_date(),'0');
 
 INSERT INTO video (titolo, immagine, creator, descrizione, tipo, src, pubblicazione) 
-  VALUES ('Genshin Impact', 'https://bit.ly/3eYB35Y', 2, 'Prologue:  The Outlander Who Caught the Wind <br>I: Farewell, Archaic Lord<br> II:  Omnipresence Over Mortals', 'gameplay', 'TAlKhARUcoY', current_date()),
+  VALUES ('Genshin Impact', 'https://bit.ly/3eYB35Y', 2, 'Prologue:  The Outlander Who Caught the Wind I: Farewell, Archaic Lord II:  Omnipresence Over Mortals', 'gameplay', 'TAlKhARUcoY', current_date()),
          ('Warriors - LoL', 'https://bit.ly/2S16YcW', 1, 'Noi siamo guerrieri. La stagione 2020 è iniziata.', 'gameplay', 'aR-KAldshAE', current_date()),
          ('Cyberpunk 2077', 'https://bit.ly/3u3769a', 3, 'CD PROJEKT RED ha mostrato oggi un nuovo video di Cyberpunk 2077 dando ai giocatori un nuovo sguardo...', 'gameplay', '2qGCax2Chik', current_date()),
          ('Il re leone', 'https://bit.ly/3fpvk89', 4, 'Ivana Spagna is awesome. Circle of Life, in Italian.', 'film', 'rsL15hjSELM', current_date()),
@@ -140,7 +140,29 @@ create procedure chi_segue (IN hash_spettatore int)
   insert into follow
     select c.hash, c.username, c.profile_pic, s.inizio from segue s join creator c on s.creator = c.hash
       where s.spettatore = hash_spettatore;
-	select * from follow;
+	select * from follow ORDER BY username;
+  end //
+
+  create procedure is_supporter (IN hash_premium int)
+  begin
+    SELECT creator FROM abbonamento where premium=hash_premium;
+  end //
+
+create procedure abbonamenti_fatti (IN hash_premium int)
+  begin
+	drop table if exists abbonamenti_t;
+	create temporary table abbonamenti_t(
+		creator int,
+		username varchar(16),
+		inizio date,
+		fine date);
+	insert into abbonamenti_t
+		select a.creator, c.username, a.inizio, null from abbonamento a join creator c on a.creator = c.hash
+			where a.premium=hash_premium;
+	insert into abbonamenti_t
+		select a.creator, c.username, a.inizio, a.fine from abbonamenti_precedenti a join creator c on a.creator = c.hash
+			where a.premium=hash_premium;
+	select * from abbonamenti_t;
   end //
 
 delimiter ;
@@ -155,3 +177,56 @@ create trigger remove_follower
     for each row
 	update creator
         set n_followers = n_followers-1 where hash = old.creator;
+
+create trigger aggiorna_abbonamenti
+	after delete on abbonamento
+    for each row
+		insert into abbonamenti_precedenti values (old.premium, old.creator, old.inizio, current_date());
+
+delimiter //
+create trigger is_premium
+	before insert on abbonamento
+    for each row
+    begin
+		declare msg varchar(255);
+		if new.premium not in (select hash from premium)
+			then set msg = "L'utente non e\' premium, quindi non può sottoscrivere un abbonamento";
+				signal sqlstate '45000' set message_text=msg;
+		end if;
+	end //
+
+  create trigger gia_abbonato
+	before insert on abbonamento
+    for each row
+    begin
+		declare msg varchar(255);
+		if new.premium in (select premium from abbonamento)
+			then set msg = "L'utente e\' gia\' abbonato ad un canale, prima disdire la sub";
+				signal sqlstate '45000' set message_text=msg;
+		end if;
+	end //
+
+create trigger controllo_costi
+	before insert on premium
+    for each row
+    begin
+		declare msg varchar(255);
+        set msg = "errore nel conteggio del costo, rivedi l'immissione";
+		if new.tipo='mensile'
+			then if new.costo <> new.mensile
+					then signal sqlstate '45000' set message_text=msg;
+					end if;
+		elseif new.tipo='annuale'
+			then if new.costo <> new.mensile*12
+					then signal sqlstate '45000' set message_text=msg;
+					end if;
+		elseif new.tipo='settimanale'
+			then if new.costo <> new.mensile/4
+					then signal sqlstate '45000' set message_text=msg;
+					end if;
+		else
+			set msg = "non esiste questo tipo di abbonamento";
+			signal sqlstate '45000' set message_text=msg;
+		end if;
+	end //
+delimiter ;

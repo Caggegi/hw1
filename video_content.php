@@ -10,6 +10,7 @@
             $query = "SELECT * from video where id=".$_GET['id'];
             $res = mysqli_query($connection, $query);
             $row = mysqli_fetch_object($res);
+            $creator = $row->creator;
             echo "<title>".$row->titolo."</title>";
         ?>
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -32,32 +33,63 @@
                 </div>
                 <div id="interact">
                     <div id="feedback">
-                        <img id="up" src="https://raw.githubusercontent.com/Caggegi/HW1/main/img/icons/arrowUP.svg">
-                        <img id="down" src="https://raw.githubusercontent.com/Caggegi/HW1/main/img/icons/arrowDOWN.svg">
                         <?php
-                            $cquery = "SELECT username FROM creator where hash=".$row->creator;
+                            $cquery = "SELECT username, profile_pic FROM creator where hash=".$creator;
                             $cname = mysqli_query($connection, $cquery);
                             $name = mysqli_fetch_object($cname);
                             echo "<h3>".$name->username."</h3>";
+                            echo "<img id='little_ppic' src='".$name->profile_pic."'/>";
                         ?>
                     </div>
                     <div id="sub_buttons">
                         <?php
-                        $creator = $row->creator;
                         session_start();
                         if(!isset($_SESSION['hash'])){
                             session_destroy();
-                            echo "<a href='signup.php'><div class='subscribe'><p>subscribe</p></div></a>";
+                            echo "<a href='signup.php'><div class='subscribe'><p>iscriviti</p></div></a>";
+                            echo "<a href='signup.php'><div class='support'><p>abbonati</p></div></a>";
                         } else{
                             $subscribed = "SELECT * FROM segue where spettatore=".$_SESSION['hash']." and creator=".$creator;
                             $SubResponse = mysqli_query($connection, $subscribed);
                             if(mysqli_fetch_object($SubResponse)){
-                                echo "<div id='subscribe' class='subscribed' data-creator='".$creator."'><p>subscribe</p></div>";
+                                echo "<div id='subscribe' class='subscribed' data-creator='".$creator."'><p>iscritto</p></div>";
+                                $isPremium = "SELECT * FROM premium where hash=".$_SESSION['hash'];
+                                $PremiumResponse = mysqli_query($connection, $isPremium);
+                                if(mysqli_num_rows($PremiumResponse)>0){
+                                    $isSupporter = "SELECT * FROM abbonamento where premium=".$_SESSION['hash'];
+                                    $SuppResponse = mysqli_query($connection, $isSupporter);
+                                    if(mysqli_num_rows($SuppResponse)>0){
+                                        $SuppRow = mysqli_fetch_assoc($SuppResponse);
+                                        $SCreator = $SuppRow['creator'];
+                                        if($SCreator == $creator)
+                                            echo "<div id='support' class='supporting' data-creator='".$creator."'><p>abbonato</p></div>";
+                                        else
+                                            echo "<div id='support' class='support' data-creator='".$creator."'><p>abbonati</p></div>";
+                                    }
+                                    else echo "<div id='support' class='support' data-creator='".$creator."'><p>abbonati</p></div>";
+                                } else
+                                    echo "<div class='no-support'><p>abbonati</p></div>";
                             } else{
-                                echo "<div id='subscribe' class='subscribe' data-creator='".$creator."'><p>subscribe</p></div>";
+                                echo "<div id='subscribe' class='subscribe' data-creator='".$creator."'><p>iscriviti</p></div>";
+                                $isPremium = "SELECT * FROM premium where hash=".$_SESSION['hash'];
+                                $PremiumResponse = mysqli_query($connection, $isPremium);
+                                if(mysqli_num_rows($PremiumResponse)>0){
+                                    $isSupporter = "SELECT * FROM abbonamento where premium=".$_SESSION['hash'];
+                                    $SuppResponse = mysqli_query($connection, $isSupporter);
+                                    if(mysqli_num_rows($SuppResponse)>0){
+                                        $SuppRow = mysqli_fetch_assoc($SuppResponse);
+                                        $SCreator = $SuppRow['creator'];
+                                        if($SCreator == $creator)
+                                        echo "<div id='support' class='supporting' data-creator='".$creator."'><p>abbonato</p></div>";
+                                    else
+                                        echo "<div id='support' class='support' data-creator='".$creator."'><p>abbonati</p></div>";
+                                    }
+                                    else echo "<div id='support' class='support' data-creator='".$creator."'><p>abbonati</p></div>";
+                                } else
+                                    echo "<div class='no-support'><p>abbonati</p></div>";
                             }
+
                         }
-                        echo "<div id='support' class='support' data-creator='".$creator."'><p>support</p></div>";
                         ?>
                     </div>
                 </div>

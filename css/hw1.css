@@ -155,9 +155,10 @@ div#sub_container div.subscription{
     justify-content: flex-start;
 }
 div#sub_container div.subscription img{
-    background-color: rgb(100, 255, 0);
+    background-color: rgb(26, 26, 26);
     margin: 8px;
     border-radius: 100%;
+    border: 2px solid rgb(100, 255, 0);
 }
 
 div#main{

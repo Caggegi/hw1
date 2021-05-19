@@ -9,6 +9,23 @@ function showHome(){
     fetch("php/video_fetcher.php?modalita=home").then(onJsonResponse).then(onVideoJson);
 }
 
+function showSearch(valore){
+    article.innerHTML= "<section class='genre' id='ricerca'><h2>Ricerca</h2><div class='show-case'></div></section>";
+    fetch("php/video_fetcher.php?modalita=ricerca&value="+valore).then(onJsonResponse).then(onSearchJson);
+}
+
+function onSearchJson(json){
+    if(json.length===0){
+        article.innerHTML = "<section class='genre' id='ricerca'><h2>Ricerca</h2>"+
+                            "<h4>Nessun risultato per la ricerca</h4></section>";
+    }
+    else{
+        for(element of json){
+            create_card(document.querySelector("section#ricerca div.show-case"), element, true);
+        }
+    }
+}
+
 function onPrefJson(json){
     if(json.length===0)
         document.querySelector("section#preferiti").classList.add("hide");
