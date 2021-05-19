@@ -54,7 +54,7 @@ function signup_login(event){
             event.preventDefault();
             error.innerHTML="";
             const title = document.createElement("h3");
-            title.textContent = "Campo vuoto";
+            title.textContent = "Voglio più dati! ԅ(≖‿≖ԅ)";
             error.appendChild(title);
             const string = document.createElement("p");
             string.textContent = "Il campo "+campo+" è vuoto, compila tutti i campi";
@@ -65,7 +65,7 @@ function signup_login(event){
                 event.preventDefault();
                 error.innerHTML="";
                 const title = document.createElement("h3");
-                title.textContent = "Le password non corrispondono";
+                title.textContent = "Battere sulla tastiera genera una password efficace... così efficace che non la sai nemmeno tu";
                 error.appendChild(title);
                 const string = document.createElement("p");
                 string.textContent = "Assicurati che la password di conferma corrisponda con quella digitata";
@@ -76,7 +76,7 @@ function signup_login(event){
                     event.preventDefault();
                     error.innerHTML="";
                     const title = document.createElement("h3");
-                    title.textContent = "Le password è troppo corta";
+                    title.textContent = "Le gambe di pinocchio sono più lunghe...";
                     error.appendChild(title);
                     const string = document.createElement("p");
                     string.textContent = "Assicurati che la password abbia più di 8 caratteri";
@@ -91,7 +91,7 @@ function signup_login(event){
                         event.preventDefault();
                         error.innerHTML="";
                         const title = document.createElement("h3");
-                        title.textContent = "Le password è troppo corta";
+                        title.textContent = "La tua password dovrebbe fare più palestra, così è troppo debole";
                         error.appendChild(title);
                         const string = document.createElement("p");
                         string.textContent = "La password deve contenere maiuscole e minuscole, numeri e caratteri speciali";

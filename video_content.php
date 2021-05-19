@@ -27,9 +27,6 @@
             <div class="controls">
                 <div id="page_controls">
                     <a href="hw1.php"><img id="home" src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/home-outline.svg"></a>
-                    <a><img id="recents" src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/clock-time-four-outline.svg"></a>
-                    <a><img id="trend" src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/trending-up.svg"></a>
-                    <a><img id="pref" src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/heart-outline.svg"></a>
                 </div>
                 <div id="interact">
                     <div id="feedback">

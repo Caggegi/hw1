@@ -43,27 +43,15 @@ div#info section div.description{
 }
 
 main div.controls div#page_controls a img{
+    margin: 10px;
     background-color: #080808;
     padding: 10px;
     border-radius: 100%;
 }
 
 main div.controls div#page_controls a img#home:hover{
-    background-color: #0b4ddb99;
+    background-color: #00ff2299;
 }
-
-main div.controls div#page_controls a img#recents:hover{
-    background-color: #0bcf3c99;
-}
-
-main div.controls div#page_controls a img#trend:hover{
-    background-color: #ffe60099;
-}
-
-main div.controls div#page_controls a img#pref:hover{
-    background-color: #fa171799;
-}
-
 
 main div.controls{
     display: flex;

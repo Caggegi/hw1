@@ -20,16 +20,27 @@
     </head>
     <?php
     session_start();
-    if(isset($_SESSION["nome"]) && isset($_SESSION["cognome"]))
-        $user = $_SESSION["nome"]." ".$_SESSION["cognome"
-    ];
-    else $user = "Welcome User";
-    if(isset($_SESSION["mail"]))  
-        $bio = $_SESSION["mail"];
-    else $bio = "Login now!";
-    if(isset($_SESSION["pic"]))  
-        $profile = $_SESSION["pic"];
-    else $profile = "https://raw.githubusercontent.com/Caggegi/mhw3/main/img/icons/account-circle-outline.svg";
+    if(isset($_SESSION["hash"])){
+        $connection = mysqli_connect("localhost", "root", "", "vt");
+        $query = "SELECT * FROM spettatore where hash=".$_SESSION['hash'];
+        $res=mysqli_query($connection,$query);
+        if(mysqli_num_rows($res)==1){
+            $row=mysqli_fetch_object($res);
+            $user = $row->name." ".$row->surname;
+            $bio = $row->email;
+            $profile = $row->profile_pic;
+        }
+    } else{
+        if(isset($_SESSION["nome"]) && isset($_SESSION["cognome"]))
+            $user = $_SESSION["nome"]." ".$_SESSION["cognome"];
+        else $user = "Welcome User";
+        if(isset($_SESSION["mail"]))  
+            $bio = $_SESSION["mail"];
+        else $bio = "Login now!";
+        if(isset($_SESSION["pic"]))  
+            $profile = $_SESSION["pic"];
+        else $profile = "https://raw.githubusercontent.com/Caggegi/mhw3/main/img/icons/account-circle-outline.svg";
+    }
     if(isset($_SESSION["tipo"])){
         echo "<form><input type='hidden' value='".$_SESSION['tipo']."' id='session_type'></input></form>";
         if($_SESSION['tipo']=='creator'){
@@ -39,7 +50,7 @@
     }  else{
         echo "<form><input type='hidden' value='none' id='session_type'></input></form>";
     }
-?>
+    ?>
     <body>
         <div class="menu_priority hide"></div>
         <div class="icon_menu hide">
@@ -64,6 +75,14 @@
                         <?php
                             if(isset($_SESSION['hash'])){
                                 echo "<a href='php/logout.php'>Log Out</a>";
+                                $query = "select hash from premium where hash=".$_SESSION['hash'];
+                                $res = mysqli_query($connection, $query);
+                                if(mysqli_num_rows($res)==0){
+                                    echo "<a href='join_us.php'>Diventa Premium</a>";
+                                } else{
+                                    echo "<a href='leave_us.php'>Non voglio pagare più</a>";
+                                }
+                                mysqli_close($connection);
                             } else{
                                 echo "<a href='signup.php'>Log In</a>";
                             }

@@ -8,13 +8,10 @@ Gli utenti premium possono abbonarsi o meno a un Creator così da supportarlo.
 ## Nuove Funzioni
 - Implementato il sistema di login e signin.
 - Abilitazione account creator e spectator
-- Sistema di like e dislike con interazione nascosta
-- Aggiunta pagina per le statistiche creator
+- Sistema di gestione preferiti
+- Aggiunta pagina per pubblicazione video
 - Aggiunta pagina per il video
 - Aggiunta interazione con il database di VideoTube
-
-### Website:
-- https://caggegi.github.io/HW1/index.html
 
 ### Credits:
 Rosario Caggegi o46002042     
