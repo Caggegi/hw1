@@ -108,12 +108,12 @@
                         <img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/home-outline.svg" class="mobile">
                         <h4>Home</h4>
                     </div>
-                    <div class="nav_button">
+                    <div class="nav_button" id="recenti">
                         <img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Dark/clock-time-four-outline.svg" class="desktop">
                         <img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/clock-time-four-outline.svg" class="mobile">
                         <h4>Recenti</h4>
                     </div>
-                    <div class="nav_button">
+                    <div class="nav_button" id="tendenze">
                         <img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Dark/trending-up.svg" class="desktop">
                         <img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/trending-up.svg" class="mobile">
                         <h4>Tendenze</h4>

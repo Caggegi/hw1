@@ -46,11 +46,25 @@ function showpref(){
     fetch("php/video_fetcher.php?modalita=preferiti").then(onJsonResponse).then(onShowPrefJson);
 }
 
+function showRecents(){
+    article.innerHTML=  "<section class='genre' id='recenti'><h2>Recenti</h2><div class='show-case'></div></section>";
+    fetch("php/video_fetcher.php?modalita=recenti").then(onJsonResponse).then(onShowRecentsJson);
+}
+
+function showHotTopics(){
+    article.innerHTML=  "<section class='genre' id='trend'><h2>Tendenze</h2><div class='show-case'></div></section>";
+    fetch("php/video_fetcher.php?modalita=virali").then(onJsonResponse).then(onShowHotTopicJson);
+}
+
 const mostraPreferiti = document.querySelector("div#preferiti");
 const mostraHome = document.querySelector("div#home");
+const mostraRecenti = document.querySelector("div#recenti");
+const mostraVirali = document.querySelector("div#tendenze");
 
 mostraPreferiti.addEventListener("click", showpref);
 mostraHome.addEventListener("click", showHome);
+mostraRecenti.addEventListener("click", showRecents);
+mostraVirali.addEventListener("click", showHotTopics);
 
 const barra_di_ricerca = document.querySelector("header div#search input#search");
 barra_di_ricerca.addEventListener("keyup", avviaRicerca);

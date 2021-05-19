@@ -6,8 +6,6 @@ function onSubResponse(response){
 }
 
 function onSubList(jsonSubList){
-    console.log(jsonSubList);
-    //posso caricare la lista
     const subs = document.querySelector("div#sub_container");
     for(let element of jsonSubList){
         const img = document.createElement("img");

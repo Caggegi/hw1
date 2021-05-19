@@ -26,6 +26,26 @@ function onSearchJson(json){
     }
 }
 
+function onShowRecentsJson(json){
+    if(json.length===0)
+        document.querySelector("section#recenti").classList.add("hide");
+    else{
+        for(element of json){
+            create_card(document.querySelector("section#recenti div.show-case"), element, true);
+        }
+    }
+}
+
+function onShowHotTopicJson(json){
+    if(json.length===0)
+        document.querySelector("section#trend").classList.add("hide");
+    else{
+        for(element of json){
+            create_card(document.querySelector("section#trend div.show-case"), element, true);
+        }
+    }
+}
+
 function onPrefJson(json){
     if(json.length===0)
         document.querySelector("section#preferiti").classList.add("hide");

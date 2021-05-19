@@ -129,6 +129,12 @@ INSERT INTO segue VALUES (1, 1, current_date()),
 
 delimiter //
 
+create view small_ht as
+  (select p.video, count(p.spettatore) as likes
+    from video v join preferiti p on v.id = p.video group by v.id);
+
+create view hot_topic as select * from video v join small_ht h on v.id=h.video;
+
 create procedure chi_segue (IN hash_spettatore int)
   begin
   drop table if exists follow;
