@@ -3,6 +3,7 @@
     <head>
     <meta charset="UTF-8"/>
         <link href="css/video_content.css" rel="stylesheet"/>
+        <link rel="icon" href="img/icons/videotube.svg">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <?php
             $connection = mysqli_connect("localhost", "root", "", "vt") or die(mysqli_connect_error());
@@ -13,6 +14,7 @@
         ?>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <script src="js/video_content.js" defer></script>
     </head>
     <body>
         <main>
@@ -39,9 +41,24 @@
                             echo "<h3>".$name->username."</h3>";
                         ?>
                     </div>
-                    <div>
-                        <div id="subscribe"><p>subscribe</p></div>
-                        <div id="support"><p>support</p></div>
+                    <div id="sub_buttons">
+                        <?php
+                        $creator = $row->creator;
+                        session_start();
+                        if(!isset($_SESSION['hash'])){
+                            session_destroy();
+                            echo "<a href='signup.php'><div class='subscribe'><p>subscribe</p></div></a>";
+                        } else{
+                            $subscribed = "SELECT * FROM segue where spettatore=".$_SESSION['hash']." and creator=".$creator;
+                            $SubResponse = mysqli_query($connection, $subscribed);
+                            if(mysqli_fetch_object($SubResponse)){
+                                echo "<div id='subscribe' class='subscribed' data-creator='".$creator."'><p>subscribe</p></div>";
+                            } else{
+                                echo "<div id='subscribe' class='subscribe' data-creator='".$creator."'><p>subscribe</p></div>";
+                            }
+                        }
+                        echo "<div id='support' class='support' data-creator='".$creator."'><p>support</p></div>";
+                        ?>
                     </div>
                 </div>
             </div>
@@ -62,3 +79,6 @@
         </main>
     </body>
 </html>
+<?php
+    mysqli_close($connection);
+?>

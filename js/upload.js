@@ -29,10 +29,15 @@ function startProcedureUpload(){
 
 function doUpload(){
     const up_form = document.forms['upload_form'];
+    let description=up_form.descrizione.value;
+    if(description.length>250){
+        let trim = description.substring(0, 250);
+        description=trim+"...";
+    }
     const postVideo = new FormData();
     postVideo.append("titolo", up_form.titolo.value);
     postVideo.append("copertina", up_form.copertina.value);
-    postVideo.append("descrizione", up_form.descrizione.value);
+    postVideo.append("descrizione", description);
     postVideo.append("src", up_form.src.value);
     postVideo.append("tipo", up_form.type.value);
 

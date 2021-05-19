@@ -194,6 +194,10 @@ div.show-case{
     flex-direction: column;
 }
 
+.card:hover{
+    cursor:pointer;
+}
+
 .card img{
     width: 300px;
     height: calc(300px*9/16);
@@ -209,6 +213,10 @@ div.show-case div.card div img{
     margin: 4px;
     font-family: 'PT Sans', 'Roboto',sans-serif;
     font-style: normal;
+}
+
+div.show-case div.card div{
+    word-wrap: break-word;
 }
 
 .card h5{
@@ -461,6 +469,7 @@ div.menu_priority{
         background-repeat: no-repeat;
         background-image: url('https://lumiere-a.akamaihd.net/v1/images/b_thelionking2019_header_poststreet_18276_ada305ce.jpeg?region=0,0,2048,879');
     }
+
 
     header div#info{
         display: none;

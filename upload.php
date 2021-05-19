@@ -17,6 +17,7 @@
 <html>
     <head>
     <meta charset="UTF-8"/>
+        <link rel="icon" href="img/icons/videotube.svg">
         <link href="css/upload.css" rel="stylesheet"/>
         <link href="css/user_btn.css" rel="stylesheet"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,8 +49,8 @@
                         <div class="radio_container">
                             <div><input type="radio" value="film" name="type"></input><label>Film</label></div>
                             <div><input type="radio" value="musica" name="type"></input><label>Musica</label></div>
-                            <div><input type="radio" value="musica" name="type"></input><label>Gameplay</label></div>
-                            <div><input type="radio" value="musica" checked="true" name="type"></input><label>Altro</label></div>
+                            <div><input type="radio" value="gameplay" name="type"></input><label>Gameplay</label></div>
+                            <div><input type="radio" value="other" checked="true" name="type"></input><label>Altro</label></div>
                         </div>
                     </div>
                 </div>    

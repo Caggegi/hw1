@@ -116,7 +116,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <meta charset="UTF-8"/>
+        <meta charset="UTF-8"/>
+        <link rel="icon" href="img/icons/videotube.svg">
         <link href="css/signup.css" rel="stylesheet"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>VideoTube Log In</title>
@@ -127,7 +128,7 @@
     <body>
         <main>
             <div class="left_image">
-                <img src="https://hackernoon.com/hn-images/1*5tInCLyrwLR7g3pdqXlN8A.gif">
+                <img src="img/GIF/signup.gif">
             </div>
             <div class="form_container">
             <?php
@@ -188,8 +189,8 @@
                         <input id="confirm" name="confirm" type="hidden" autocomplete placeholder="Confirm password">
                         </input>
                         <div id="radio_buttons">
-                            <input type="radio" value="spectator" checked="true" name="type"></input><label>Spectator</label>
-                            <input type="radio" value="creator" name="type"></input><label>Creator</label>
+                            <input type="radio" value="spectator" checked="true" name="type" id="inp_spectator"></input><label>Spectator</label>
+                            <input type="radio" value="creator" name="type" id="inp_creator"></input><label>Creator</label>
                         </div>
                         <div class="btns">
                         <input type="submit" id="signup" value="Log In"></input>

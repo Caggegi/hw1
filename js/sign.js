@@ -119,3 +119,18 @@ function signup_login(event){
         }
     }
 }
+
+document.querySelector("input#inp_spectator").addEventListener("click", changeSpecGIF);
+document.querySelector("input#inp_creator").addEventListener("click", changeCreatGIF);
+
+function changeSpecGIF(){
+    const left_image = document.querySelector("main div.left_image");
+    left_image.style.backgroundColor = "#B1B9C7";
+    left_image.querySelector("img").src = "img/GIF/signup.gif"
+}
+
+function changeCreatGIF(){
+    const left_image = document.querySelector("main div.left_image");
+    left_image.style.backgroundColor = "#4a4b58";
+    left_image.querySelector("img").src = "img/GIF/signup2.gif"
+}

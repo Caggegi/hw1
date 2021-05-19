@@ -24,11 +24,9 @@
                 for($i=0; $i<$end_id; $i++)
                     $id.=$url[$start_id+$i];
                 $connection = mysqli_connect("localhost", "root", "", "vt") or die(mysqli_connect_error());
-                /*$query = "INSERT INTO video(titolo, immagine, creator, descrizione, tipo, src, pubblicazione)".
+                $query = "INSERT INTO video(titolo, immagine, creator, descrizione, tipo, src, pubblicazione)".
                 "VALUES ('".$titolo."','".$copertina."','".$creator."','".$descrizione."','".$tipo."','".$id."','".
-                date("YYYY-mm-dd").");";*/
-                $query = "INSERT INTO video(titolo, immagine, creator, descrizione, tipo, src)".
-                "VALUES ('".$titolo."','".$copertina."','".$creator."','".$descrizione."','".$tipo."','".$id."');";
+                date('Y-m-d')."');";
                 $res = mysqli_query($connection, $query);
                 mysqli_close($connection);
                 $json_["risposta"]='video_caricato';

@@ -24,11 +24,15 @@ main{
 
 div#info{
     margin: 20px 2%;
-    width: 50%;
+    width: 40%;
     padding: 0px 20px;
     background-color: #080808;
     border-radius: 4px;
-    height: 28.125vw;
+    height: 100%;
+}
+
+div#info section{
+    word-wrap: break-word;
 }
 
 div#info section div.description{
@@ -77,7 +81,12 @@ main div.controls div#interact div{
     flex-direction: row;
 }
 
-div#subscribe{
+div#sub_buttons a{
+    color: white;
+    text-decoration: none;
+}
+
+div.subscribe{
     background-color: rgb(53, 53, 53);
     display: flex;
     align-items: center;
@@ -89,12 +98,29 @@ div#subscribe{
     box-shadow: black 0px 2px 3px;
 }
 
-div#subscribe:hover{
+div.subscribe:hover{
     background-color: rgb(142, 42, 224);
     cursor: pointer;
 }
 
-div#support{
+div.subscribed:hover{
+    background-color: rgb(53, 53, 53);
+    cursor: pointer;
+}
+
+div.subscribed{
+    background-color: rgb(105, 28, 168);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px 0px 0px 6px;
+    border-right: 1px solid rgb(106, 106, 106);
+    padding: 0px 5px;
+    height: 30px;
+    box-shadow: black 0px 2px 3px;
+}
+
+div.support{
     background-color: rgb(53, 53, 53);
     display: flex;
     align-items: center;
@@ -106,9 +132,26 @@ div#support{
     box-shadow: black 2px 2px 3px;
 }
 
-div#support:hover{
+div.support:hover{
     background-color: rgb(60, 123, 206); 
     cursor: pointer;
+}
+
+div.supporting:hover{
+    background-color: rgb(53, 53, 53);
+    cursor: pointer;
+}
+
+div.supporting{
+    background-color: rgb(22, 81, 158); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px 6px 6px 0px;
+    border-left: 1px solid rgb(106, 106, 106);
+    padding: 0px 5px;
+    height: 30px;
+    box-shadow: black 2px 2px 3px;
 }
 
 img#up{

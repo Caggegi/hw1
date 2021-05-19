@@ -1,25 +1,45 @@
-const video = [];
+const article = document.querySelector("article#video-frame");
+function showHome(){
+    article.innerHTML=  "<section class='genre' id='preferiti'><h2>Preferiti</h2><div class='show-case'></div></section>"+
+                        "<section class='genre' id='film'><h2>Film</h2><div class='show-case'></div></section>"+
+                        "<section class='genre' id='musica'><h2>Musica</h2><div class='show-case'></div></section>"+
+                        "<section class='genre' id='gameplay'><h2>Gameplay</h2><div class='show-case'></div></section>"+
+                        "<section class='genre' id='altro'><h2>Altro</h2><div class='show-case'></div></section>";
+    fetch("php/video_fetcher.php?modalita=preferiti").then(onJsonResponse).then(onPrefJson);
+    fetch("php/video_fetcher.php?modalita=home").then(onJsonResponse).then(onVideoJson);
+}
 
-fetch("php/video_fetcher.php").then(onResponse).then(onVideoJson);
+function onPrefJson(json){
+    if(json.length===0)
+        document.querySelector("section#preferiti").classList.add("hide");
+    else{
+        for(element of json){
+            create_card(document.querySelector("section#preferiti div.show-case"), element, false);
+        }
+    }
+}
 
-function onResponse(response){
+function onJsonResponse(response){
     return response.json();
 }
 
 function onVideoJson(json){
+    const video = [];
     for(element of json){
         video.push(element);
     }
-    loadPage();
+    loadPage(video);
 }
 
-console.log(video);
-function loadPage(){
-    let film=0;
-    let musica=0;
-    let gameplay=0;
-    let altro=0;
-    for(let elemento of video){
+showHome();
+
+let film=0;
+let musica=0;
+let gameplay=0;
+let altro=0;
+
+function loadPage(videoContent){
+    for(let elemento of videoContent){
         if(elemento.tipo=='film'){
             film++;
         } else if(elemento.tipo=='musica'){
@@ -59,7 +79,7 @@ function loadPage(){
         document.querySelector("section#altro").classList.add("show");
     }
     
-    for(let elemento of video){
+    for(let elemento of videoContent){
         let sezione=undefined;
         if(elemento.tipo=='film'){
             sezione = document.querySelector("section#film div.show-case");
@@ -108,20 +128,20 @@ function create_card(sezione, elemento, preferiti){
     info.src="https://raw.githubusercontent.com/Caggegi/mhw2/master/img/icons/information.svg";
     info.dataset.codice = elemento.id;
     info.dataset.tipo = elemento.tipo;
+    linker.appendChild(immagine);
+    linker.href = "video_content.php?id="+elemento.id+"&src="+elemento.src;
+    linker.classList.add("linker");
+    carta.appendChild(linker);
     info.classList.add("info");
     about.appendChild(titolo);
     about.appendChild(creator);
     about.appendChild(descrizione);
     about.appendChild(plus);
     about.appendChild(info);
-    carta.appendChild(immagine);
     carta.appendChild(about);
     carta.dataset.codice = elemento.id;
     carta.dataset.tipo = elemento.tipo;
-    linker.appendChild(carta);
-    linker.href = "video_content.php?id="+elemento.id+"&src="+elemento.src;
-    linker.classList.add("linker");
-    sezione.appendChild(linker);
+    sezione.appendChild(carta);
     const not_favourites = document.querySelectorAll("div.card div img.rimuovi");
     for (let pulsante of not_favourites){
         pulsante.addEventListener("click", rimuoviPreferiti);
@@ -134,4 +154,29 @@ function create_card(sezione, elemento, preferiti){
     for (let button of info_button){
         button.addEventListener("click", mostraDescrizione);
     }
+}
+
+function onText(promise){
+    return promise.text();
+}
+
+function aggiungiPreferiti(event){
+    const add = new FormData();
+    add.append("azione", "aggiungi");
+    add.append("video_id", event.currentTarget.dataset.codice); 
+    fetch("php/favourite_manager.php", {
+        method:'post',
+        body: add}).then(onText);
+    showHome();
+}
+
+
+function rimuoviPreferiti(event){
+    const remove = new FormData();
+    remove.append("azione", "rimuovi");
+    remove.append("video_id", event.currentTarget.dataset.codice); 
+    fetch("php/favourite_manager.php", {
+        method:'post',
+        body: remove}).then(onText);
+    showHome();
 }

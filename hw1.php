@@ -1,26 +1,3 @@
-<?php
-    session_start();
-    if(isset($_SESSION["nome"]) && isset($_SESSION["cognome"]))
-        $user = $_SESSION["nome"]." ".$_SESSION["cognome"];
-    else $user = "Welcome User";
-    if(isset($_SESSION["mail"]))  
-        $bio = $_SESSION["mail"];
-    else $bio = "Login now!";
-    if(isset($_SESSION["pic"]))  
-        $profile = $_SESSION["pic"];
-    else $profile = "https://raw.githubusercontent.com/Caggegi/mhw3/main/img/icons/account-circle-outline.svg";
-    if(isset($_SESSION["tipo"])){
-        echo "<form><input type='hidden' value='".$_SESSION['tipo']."' id='session_type'></input></form>";
-        if($_SESSION['tipo']=='creator'){
-            header("Location: upload.php");
-            exit;
-        }
-    }  else{
-        echo "<form><input type='hidden' value='none' id='session_type'></input></form>";
-    }
-?>
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,8 +15,31 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
         <script src="js/contents.js " defer></script>
         <script src="js/script.js" defer></script>
-        <script src="js/sub_loader.js" defer></script>
+        <script src="js/sub_loader.js" defer></script>        
+        <link rel="icon" href="img/icons/videotube.svg">
     </head>
+    <?php
+    session_start();
+    if(isset($_SESSION["nome"]) && isset($_SESSION["cognome"]))
+        $user = $_SESSION["nome"]." ".$_SESSION["cognome"
+    ];
+    else $user = "Welcome User";
+    if(isset($_SESSION["mail"]))  
+        $bio = $_SESSION["mail"];
+    else $bio = "Login now!";
+    if(isset($_SESSION["pic"]))  
+        $profile = $_SESSION["pic"];
+    else $profile = "https://raw.githubusercontent.com/Caggegi/mhw3/main/img/icons/account-circle-outline.svg";
+    if(isset($_SESSION["tipo"])){
+        echo "<form><input type='hidden' value='".$_SESSION['tipo']."' id='session_type'></input></form>";
+        if($_SESSION['tipo']=='creator'){
+            header("Location: upload.php");
+            exit;
+        }
+    }  else{
+        echo "<form><input type='hidden' value='none' id='session_type'></input></form>";
+    }
+?>
     <body>
         <div class="menu_priority hide"></div>
         <div class="icon_menu hide">
@@ -140,24 +140,23 @@
                 </section>
                 <section class="genre hide" id="preferiti">
                     <h2>Preferiti</h2>
-                    <h3 id="no_pref">Nessun preferito trovato</h3>
                     <div class="show-case"></div>
                 </section>
-                <section class="genre" id="film">
+                <section class='genre' id='film'>
                     <h2>Film</h2>
-                    <div class="show-case"></div>
+                    <div class='show-case'></div>
                 </section>
-                <section class="genre" id="musica">
+                <section class='genre' id='musica'>
                     <h2>Musica</h2>
-                    <div class="show-case"></div>
+                    <div class='show-case'></div>
                 </section>
-                <section class="genre" id="gameplay">
+                <section class='genre' id='gameplay'>
                     <h2>Gameplay</h2>
-                    <div class="show-case"></div>
+                    <div class='show-case'></div>
                 </section>
-                <section class="genre" id="altro">
+                <section class='genre' id='altro'>
                     <h2>Altro</h2>
-                    <div class="show-case"></div>
+                    <div class='show-case'></div>
                 </section> 
             </article>
         </div>
@@ -173,3 +172,4 @@
         </footer>
     </body>
 </html>
+

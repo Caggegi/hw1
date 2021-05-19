@@ -2,6 +2,12 @@ const preferiti = [];
 const ricerca = [];
 
 
+//info buttons
+const info_button = document.querySelectorAll("div.card div img.info");
+for (let button of info_button){
+    button.addEventListener("click", mostraDescrizione);
+}
+
 function mostraDescrizione(event){
     const button = event.currentTarget;
     const descrizione = button.parentNode.querySelector("p.hide");
@@ -16,65 +22,39 @@ function mostraDescrizione(event){
     }
 }
 
-function aggiungiPreferiti(event){
-    if(preferiti.length===0){
-        document.querySelector("section#preferiti").classList.add("show");
-        document.querySelector("section#preferiti").classList.remove("hide");
-        document.querySelector("#no_pref").classList.add("hide");
-        document.querySelector("#no_pref").classList.remove("show");
-    }
-    if(ricerca.length!==0){
-        document.querySelector("section#preferiti").classList.add("hide");
-        document.querySelector("section#preferiti").classList.remove("show");
-    }
-    const card = event.currentTarget.parentNode.parentNode;
-    const elemento = {
-        titolo: card.querySelector("div h5").textContent,
-        immagine: card.querySelector("img.image").src,
-        creator: card.querySelector("div p").textContent,
-        descrizione: card.querySelector("div p.description").textContent,
-        id: card.dataset.codice,
-        tipo: card.dataset.tipo
-    }
-    let isPresent = false;
-    for(temp of preferiti){
-        if(temp.tipo === elemento.tipo && temp.id === elemento.id){
-            isPresent = true;
-        }
-    }
-    if(!isPresent){
-        preferiti.push(elemento);
-        sezione = document.querySelector("section#preferiti div.show-case");
-        create_card(sezione, elemento, false);
-    }
-}
-
-function rimuoviPreferiti(event){
-    const card = event.currentTarget.parentNode.parentNode;
-    for(elemento of preferiti){
-        if(elemento.tipo === card.dataset.tipo && elemento.id === card.dataset.codice){
-            preferiti.splice(preferiti.indexOf(elemento),1);
-            card.parentNode.removeChild(card);
-        }
-    }
-    if(preferiti.length===0){
-        document.querySelector("section#preferiti").classList.add("hide");
-        document.querySelector("section#preferiti").classList.remove("show");
-        document.querySelector("#no_pref").classList.add("show");
-        document.querySelector("#no_pref").classList.remove("hide");
-    }
-}
-
-const info_button = document.querySelectorAll("div.card div img.info");
-for (let button of info_button){
-    button.addEventListener("click", mostraDescrizione);
-}
-
-
+//favourites buttons
 const favourites = document.querySelectorAll("div.card div img.preferiti");
 for (let button of favourites){
     button.addEventListener("click", aggiungiPreferiti);
 }
+
+function onShowPrefJson(json){
+    if(json.length===0){
+        const nopref = document.createElement("h3");
+        nopref.textContent = "Non hai ancora dei preferiti";
+        document.querySelector("section#preferiti").appendChild(nopref);
+    }
+    else{
+        for(element of json){
+            create_card(document.querySelector("section#preferiti div.show-case"), element, false);
+        }
+    }
+}
+
+function showpref(){
+    article.innerHTML=  "<section class='genre' id='preferiti'><h2>Preferiti</h2><div class='show-case'></div></section>";
+    fetch("php/video_fetcher.php?modalita=preferiti").then(onJsonResponse).then(onShowPrefJson);
+}
+
+const mostraPreferiti = document.querySelector("div#preferiti");
+const mostraHome = document.querySelector("div#home");
+
+mostraPreferiti.addEventListener("click", showpref);
+mostraHome.addEventListener("click", showHome);
+
+const barra_di_ricerca = document.querySelector("header div#search input#search");
+barra_di_ricerca.addEventListener("keyup", avviaRicerca);
+
 
 
 function avviaRicerca(){
@@ -101,71 +81,8 @@ function avviaRicerca(){
     }
 }
 
-const barra_di_ricerca = document.querySelector("header div#search input#search");
-barra_di_ricerca.addEventListener("keyup", avviaRicerca);
-
-const mostraPreferiti = document.querySelector("div#preferiti");
-const mostraHome = document.querySelector("div#home");
-
-mostraPreferiti.addEventListener("click", showpref);
-mostraHome.addEventListener("click", hidesearch);
-
 function hidesearch(){ 
-    document.querySelector("section#ricerca").classList.add("hide");
-    document.querySelector("section#ricerca").classList.remove("show");
-    if(film!==0){
-        document.querySelector("section#film").classList.remove("hide");
-        document.querySelector("section#film").classList.add("show");
-    }
-    if(musica!==0){
-        document.querySelector("section#musica").classList.remove("hide");
-        document.querySelector("section#musica").classList.add("show");
-    }
-    if(gameplay!==0){
-        document.querySelector("section#gameplay").classList.remove("hide");
-        document.querySelector("section#gameplay").classList.add("show");
-    }
-    if(altro!==0){
-        document.querySelector("section#altro").classList.remove("hide");
-        document.querySelector("section#altro").classList.add("show");
-    }
-    if(preferiti.length!==0){
-        document.querySelector("section#preferiti").classList.remove("hide");
-        document.querySelector("section#preferiti").classList.add("show");
-    } else{
-        document.querySelector("section#preferiti").classList.add("hide");
-        document.querySelector("section#preferiti").classList.remove("show");
-    }
-}
-
-function showsearch(){
-    document.querySelector("section#ricerca").classList.add("show");
-    document.querySelector("section#ricerca").classList.remove("hide");
-    document.querySelector("section#film").classList.remove("show");
-    document.querySelector("section#film").classList.add("hide");
-    document.querySelector("section#musica").classList.remove("show");
-    document.querySelector("section#musica").classList.add("hide");
-    document.querySelector("section#gameplay").classList.remove("show");
-    document.querySelector("section#gameplay").classList.add("hide");
-    document.querySelector("section#preferiti").classList.remove("show");
-    document.querySelector("section#preferiti").classList.add("hide");
-    document.querySelector("section#altro").classList.remove("show");
-    document.querySelector("section#altro").classList.add("hide");
-}
-
-function showpref(){
-    document.querySelector("section#preferiti").classList.add("show");
-    document.querySelector("section#preferiti").classList.remove("hide");
-    document.querySelector("section#film").classList.remove("show");
-    document.querySelector("section#film").classList.add("hide");
-    document.querySelector("section#musica").classList.remove("show");
-    document.querySelector("section#musica").classList.add("hide");
-    document.querySelector("section#gameplay").classList.remove("show");
-    document.querySelector("section#gameplay").classList.add("hide");
-    document.querySelector("section#ricerca").classList.remove("show");
-    document.querySelector("section#ricerca").classList.add("hide");
-    document.querySelector("section#altro").classList.remove("show");
-    document.querySelector("section#altro").classList.add("hide");
+    
 }
 
 document.querySelector("header div#info").addEventListener("click", changePic);
@@ -206,11 +123,7 @@ function saveIconMenu(){
     fetch("php/accountDetails.php", {
         method:'post',
         body: formdata
-    }).then(OnSaveResponse).then(onSaveJson);
-}
-
-function OnSaveResponse(response){
-    return response.json();
+    }).then(onJsonResponse).then(onSaveJson);
 }
 
 function onSaveJson(json){
@@ -262,7 +175,7 @@ function showUnsplashed(category){
                 "Authorization":"Client-ID "+unsplash_key,
             }
         })
-        .then(onResponseUnsplashed, onError2).then(unsplashJson);
+        .then(onJsonResponse, onError2).then(unsplashJson);
     } else{
         fetch(unsplash+"/search/photos/?page=1&query="+category+"&orientation=squarish&content_filter=high&per_page=5",{
             method:"get",
@@ -270,12 +183,8 @@ function showUnsplashed(category){
                 "Authorization":"Client-ID "+unsplash_key,
             }
         })
-        .then(onResponseUnsplashed, onError2).then(unsplashJson);
+        .then(onJsonResponse, onError2).then(unsplashJson);
     }
-}
-
-function onResponseUnsplashed(response){
-    return response.json();
 }
 
 function unsplashJson(json){
