@@ -1,7 +1,8 @@
 <?php
+    require_once("../db_credentials.php");
     session_start();
     if(isset($_SESSION['hash']) && isset($_POST['azione']) && isset($_POST['video_id'])){
-        $connection = mysqli_connect("localhost", "root", "", "vt") or die(mysqli_connect_error());
+        $connection = mysqli_connect($mydb_connect['server'], $mydb_connect['user'], $mydb_connect['psw'], $mydb_connect['db']) or die(mysqli_connect_error);
         if($_POST['azione']=="aggiungi")
             $query='INSERT INTO preferiti (spettatore, video) values ('.$_SESSION['hash'].','.$_POST['video_id'].')';
         else

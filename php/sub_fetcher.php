@@ -1,9 +1,10 @@
 <?php
+    require_once("../db_credentials.php");
     session_start();
     if(isset($_SESSION['hash']) && isset($_SESSION['tipo'])){
         if($_SESSION['tipo']=="spectator"){
             $lista = array();
-            $connection = mysqli_connect("localhost", "root", "", "vt") or die(mysqli_connect_error());
+            $connection = mysqli_connect($mydb_connect['server'], $mydb_connect['user'], $mydb_connect['psw'], $mydb_connect['db']) or die(mysqli_connect_error);
             $query = "call chi_segue(".$_SESSION['hash'].");";
             $res = mysqli_query($connection, $query);
             while($row = mysqli_fetch_object($res)){

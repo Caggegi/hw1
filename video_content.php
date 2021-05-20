@@ -6,7 +6,8 @@
         <link rel="icon" href="img/icons/videotube.svg">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <?php
-            $connection = mysqli_connect("localhost", "root", "", "vt") or die(mysqli_connect_error());
+            require_once("db_credentials.php");
+            $connection = mysqli_connect($mydb_connect['server'], $mydb_connect['user'], $mydb_connect['psw'], $mydb_connect['db']) or die(mysqli_connect_error);
             $query = "SELECT * from video where id=".$_GET['id'];
             $res = mysqli_query($connection, $query);
             $row = mysqli_fetch_object($res);

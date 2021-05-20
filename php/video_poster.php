@@ -1,4 +1,5 @@
 <?php
+    require_once("../db_credentials.php");
     session_start();
     $json_=array("risposta"=>"errore");
     $titolo = "";
@@ -23,7 +24,7 @@
                 else $end_id = $end_id-$start_id;
                 for($i=0; $i<$end_id; $i++)
                     $id.=$url[$start_id+$i];
-                $connection = mysqli_connect("localhost", "root", "", "vt") or die(mysqli_connect_error());
+                $connection = mysqli_connect($mydb_connect['server'], $mydb_connect['user'], $mydb_connect['psw'], $mydb_connect['db']) or die(mysqli_connect_error);
                 $query = "INSERT INTO video(titolo, immagine, creator, descrizione, tipo, src, pubblicazione)".
                 "VALUES ('".$titolo."','".$copertina."','".$creator."','".$descrizione."','".$tipo."','".$id."','".
                 date('Y-m-d')."');";
