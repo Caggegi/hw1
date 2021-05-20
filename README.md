@@ -13,6 +13,13 @@ Gli utenti premium possono abbonarsi o meno a un Creator così da supportarlo.
 - Aggiunta pagina per il video
 - Aggiunta interazione con il database di VideoTube
 
+## Istruzioni per l'esecuzione
+- Scarica o clona il progetto nella cartella htdocs di xampp
+- Avvia il server apache e mysql
+- Accedi al database mysql con username "root" e password ""
+- Digita i comandi del file vt.sql
+- Ora puoi cercare hw1.php(la pagina principale) dal browser
+
 ### Credits:
 Rosario Caggegi o46002042     
 [![GitHub - hw1](https://github.com/Caggegi/mhw1/blob/master/img/Light/github.svg)](https://github.com/Caggegi/hw1)
