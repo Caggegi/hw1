@@ -1,4 +1,5 @@
 <?php
+    require_once("db_credentials.php");
 
     session_start();
     function setUserSession(int $hash, string $nome, string $cognome, string $tipo, string $user, 
@@ -15,7 +16,7 @@
     }
 
     $errore = "";
-    $connection = mysqli_connect("localhost", "root", "", "vt") or die(mysqli_connect_error());
+    $connection = mysqli_connect($mydb_connect['server'], $mydb_connect['user'], $mydb_connect['psw'], $mydb_connect['db']) or die(mysqli_connect_error);
     if(isset($_POST['mode']) && $_POST['mode']==1){
         //sign up
         if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['type'])){

@@ -11,9 +11,10 @@
 </head>
 <body>
     <?php
+        require_once("db_credentials.php");
         session_start();
         if(isset($_SESSION['hash'])){
-            $connect = mysqli_connect("localhost", "root", "", "vt") or die(mysqli_connect_error);
+            $connect = mysqli_connect($mydb_connect['server'], $mydb_connect['user'], $mydb_connect['psw'], $mydb_connect['db']) or die(mysqli_connect_error);
             $query = "select hash from premium where hash=".$_SESSION['hash'];
             $res = mysqli_query($connect, $query);
             if(mysqli_num_rows($res)>0){

@@ -1,7 +1,8 @@
 <?php
+    require_once("../db_credentials.php");
     session_start();
     if(isset($_SESSION['hash']) && isset($_POST['action']) && isset($_POST['creator']) && isset($_POST['tipo'])){
-        $connection = mysqli_connect("localhost", "root", "", "vt") or die(mysqli_connect_error());
+        $connection = mysqli_connect($mydb_connect['server'], $mydb_connect['user'], $mydb_connect['psw'], $mydb_connect['db']) or die(mysqli_connect_error);
         if($_POST['tipo']=='segue') $par='spettatore';
         else $par='premium';
         if($_POST['action']=='subscribe'){

@@ -1,4 +1,5 @@
 <?php
+    require_once("db_credentials.php");
     session_start();
     if(!isset($_SESSION['tipo']) || $_SESSION['tipo']=='spectator'){
         session_destroy();
@@ -101,7 +102,7 @@
         <main>
             <h2 class="mobile riepilogo">Riepilogo contenuti:</h2>
             <?php
-                $connection = mysqli_connect("localhost", "root", "", "vt") or die(mysqli_connect_error());
+                $connection = mysqli_connect($mydb_connect['server'], $mydb_connect['user'], $mydb_connect['psw'], $mydb_connect['db']) or die(mysqli_connect_error);
                 $query = "SELECT titolo, immagine, descrizione FROM video where creator =".$_SESSION['hash'].";";
                 $res = mysqli_query($connection, $query);
                 while($row = mysqli_fetch_object($res)){

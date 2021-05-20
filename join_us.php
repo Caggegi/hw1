@@ -11,9 +11,10 @@
 </head>
 <body>
         <?php
+        require_once("db_credentials.php");
         session_start();
         if(isset($_POST['tipo_abbonamento']) && isset($_SESSION['hash']) && isset($_POST['pass'])){
-            $connection = mysqli_connect("localhost", "root", "", "vt") or die(mysqli_connect_error());
+            $connection = mysqli_connect($mydb_connect['server'], $mydb_connect['user'], $mydb_connect['psw'], $mydb_connect['db']) or die(mysqli_connect_error);
             $pass = mysqli_real_escape_string($connection, $_POST['pass']);
             $query = "select * from spettatore where hash=".$_SESSION['hash']." and password='".hash('sha256', $pass)."';";
             if(mysqli_num_rows(mysqli_query($connection, $query))==1){

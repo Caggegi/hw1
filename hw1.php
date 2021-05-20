@@ -19,9 +19,10 @@
         <link rel="icon" href="img/icons/videotube.svg">
     </head>
     <?php
+    require_once("db_credentials.php");
     session_start();
     if(isset($_SESSION["hash"])){
-        $connection = mysqli_connect("localhost", "root", "", "vt");
+        $connection = mysqli_connect($mydb_connect['server'], $mydb_connect['user'], $mydb_connect['psw'], $mydb_connect['db']) or die(mysqli_connect_error);
         $query = "SELECT * FROM spettatore where hash=".$_SESSION['hash'];
         $res=mysqli_query($connection,$query);
         if(mysqli_num_rows($res)==1){
