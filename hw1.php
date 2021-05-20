@@ -80,7 +80,17 @@
                                 if(mysqli_num_rows($res)==0){
                                     echo "<a href='join_us.php'>Diventa Premium</a>";
                                 } else{
-                                    echo "<a href='leave_us.php'>Non voglio pagare più</a>";
+                                    $query = "select tipo from premium where hash=".$_SESSION['hash'];
+                                    $res = mysqli_query($connection, $query);
+                                    $row = mysqli_fetch_object($res);
+                                    if($row->tipo == "settimanale")
+                                        echo "<a href='leave_us.php'>☕Non voglio pagare più</a>";
+                                    else if($row->tipo == "mensile")
+                                        echo "<a href='leave_us.php'>🍫Non voglio pagare più</a>";
+                                    else if($row->tipo == "annuale")
+                                        echo "<a href='leave_us.php'>🥑Non voglio pagare più</a>";
+                                    else
+                                        echo "<a href='leave_us.php'>❓Non voglio pagare più</a>";
                                 }
                                 mysqli_close($connection);
                             } else{

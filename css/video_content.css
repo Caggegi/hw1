@@ -154,6 +154,10 @@ div.support, div.no-support{
     box-shadow: black 0px 2px 3px;
 }
 
+div.no-support:hover{
+    cursor: not-allowed;
+}
+
 img#little_ppic{
     height: 48px;
     width: 48px;
