@@ -23,6 +23,25 @@
  - Modifica il file db_credentials.php inserendo il tuo username e la tua password per mysql;
  - Collegati alla pagina localhost/path/to/file/hw1.php;
 
+## 🖼️ Screenshots
+![Screenshot1](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(150).png)
+![Screenshot2](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(151).png)
+![Screenshot3](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(152).png)
+![Screenshot4](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(153).png)
+![Screenshot5](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(154).png)
+![Screenshot6](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(155).png)
+![Screenshot7](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(156).png)
+![Screenshot8](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(157).png)
+![Screenshot9](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(158).png)
+![Screenshot10](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(159).png)
+![Screenshot11](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(160).png)
+![Screenshot12](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(161).png)
+![Screenshot13](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(162).png)
+![Screenshot14](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(163).png)
+![Screenshot15](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(164).png)
+![Screenshot16](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(165).png)
+![Screenshot17](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(166).png)
+
  ### 👤 Credits:
  Rosario Caggegi o46002042     
  [![GitHub - hw1](https://github.com/Caggegi/mhw1/blob/master/img/Light/github.svg)](https://github.com/Caggegi/hw1)
