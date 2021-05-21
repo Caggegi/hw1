@@ -34,13 +34,12 @@
 ![Screenshot8](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(157).png)
 ![Screenshot9](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(158).png)
 ![Screenshot10](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(159).png)
-![Screenshot11](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(160).png)
-![Screenshot12](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(161).png)
-![Screenshot13](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(162).png)
-![Screenshot14](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(163).png)
-![Screenshot15](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(164).png)
-![Screenshot16](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(165).png)
-![Screenshot17](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(166).png)
+![Screenshot11](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(161).png)
+![Screenshot12](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(162).png)
+![Screenshot13](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(163).png)
+![Screenshot14](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(164).png)
+![Screenshot15](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(165).png)
+![Screenshot16](https://github.com/Caggegi/HW1/blob/main/img/others/Screenshot%20(166).png)
 
  ### 👤 Credits:
  Rosario Caggegi o46002042     
