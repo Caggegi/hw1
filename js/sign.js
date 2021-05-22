@@ -88,7 +88,7 @@ function signup_login(event){
                     error.classList.remove("hidden");
                 }
                 else{
-                    if(/[A-Za-z]+/.test(modulo.password.value) && 
+                    if(/[A-Za-z]+/.test(modulo.password.value) &&
                         /[0-9]+/.test(modulo.password.value) && /[^a-z0-9]+/i.test(modulo.password.value)){
                         error.classList.add("hidden");
                     }else{

@@ -6,11 +6,8 @@
     if($_POST["tipo"]=="creator")
         $tabella = 'creator';
     $res = mysqli_query($connection, "SELECT * FROM ".$tabella." WHERE username='".$username."'");
-    if(mysqli_num_rows($res)>0){
-        $result = array('isPresent'=>'true');
-        echo json_encode($result);
-    } else{
-        $result = array('isPresent'=>'false');
-        echo json_encode($result);
-    }
+    if(mysqli_num_rows($res)>0)
+        echo "true";
+    else
+        echo "false";
 ?>

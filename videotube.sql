@@ -32,7 +32,7 @@ CREATE table premium(
     tipo varchar(16),
     FOREIGN KEY(hash) REFERENCES spettatore(hash) on delete cascade,
     INDEX index_premium(hash));
-  
+
 CREATE table video(
     titolo varchar(20),
     immagine varchar(255),
@@ -106,7 +106,7 @@ INSERT INTO creator(hash, name, surname, username, email, password, profile_pic,
          (9, 'Michele','Salvemini','Caparezza','caparezza@gmail.com','d1fdc211f5414e6974317921f57c89e9a7c41def55d3fc7befa436efb8ac7c04','https://bit.ly/3tYcRVv',current_date(),'0'),
          (10, 'Universe Science Italy','','UniverseScienceItaly','usitaly@cd.com','d1fdc211f5414e6974317921f57c89e9a7c41def55d3fc7befa436efb8ac7c04','https://bit.ly/3ytVsHR',current_date(),'0');
 
-INSERT INTO video (titolo, immagine, creator, descrizione, tipo, src, pubblicazione) 
+INSERT INTO video (titolo, immagine, creator, descrizione, tipo, src, pubblicazione)
   VALUES ('Genshin Impact', 'https://bit.ly/3eYB35Y', 2, 'Prologue:  The Outlander Who Caught the Wind I: Farewell, Archaic Lord II:  Omnipresence Over Mortals', 'gameplay', 'TAlKhARUcoY', current_date()),
          ('Warriors - LoL', 'https://bit.ly/2S16YcW', 1, 'Noi siamo guerrieri. La stagione 2020 è iniziata.', 'gameplay', 'aR-KAldshAE', current_date()),
          ('Cyberpunk 2077', 'https://bit.ly/3u3769a', 3, 'CD PROJEKT RED ha mostrato oggi un nuovo video di Cyberpunk 2077 dando ai giocatori un nuovo sguardo...', 'gameplay', '2qGCax2Chik', current_date()),
