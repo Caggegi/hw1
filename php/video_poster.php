@@ -26,7 +26,12 @@
                     $id.=$url[$start_id+$i];
                 $connection = mysqli_connect($mydb_connect['server'], $mydb_connect['user'], $mydb_connect['psw'], $mydb_connect['db']) or die(mysqli_connect_error);
                 $query = "INSERT INTO video(titolo, immagine, creator, descrizione, tipo, src, pubblicazione)".
-                "VALUES ('".$titolo."','".$copertina."','".$creator."','".$descrizione."','".$tipo."','".$id."','".
+                "VALUES ('".$titolo."','"
+                .mysqli_real_escape_string($connection,$copertina)."','"
+                .mysqli_real_escape_string($connection,$creator)."','"
+                .mysqli_real_escape_string($connection,$descrizione)."','"
+                .mysqli_real_escape_string($connection,$tipo)."','"
+                .mysqli_real_escape_string($connection,$id)."','".
                 date('Y-m-d')."');";
                 $res = mysqli_query($connection, $query);
                 mysqli_close($connection);
