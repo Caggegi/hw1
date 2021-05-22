@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
     $mydb_connect=array(
         'server' => 'localhost',
