@@ -15,7 +15,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
         <script src="js/contents.js " defer></script>
         <script src="js/script.js" defer></script>
-        <script src="js/sub_loader.js" defer></script>        
+        <script src="js/sub_loader.js" defer></script>
         <link rel="icon" href="img/icons/videotube.svg">
     </head>
     <?php
@@ -35,10 +35,10 @@
         if(isset($_SESSION["nome"]) && isset($_SESSION["cognome"]))
             $user = $_SESSION["nome"]." ".$_SESSION["cognome"];
         else $user = "Welcome User";
-        if(isset($_SESSION["mail"]))  
+        if(isset($_SESSION["mail"]))
             $bio = $_SESSION["mail"];
         else $bio = "Login now!";
-        if(isset($_SESSION["pic"]))  
+        if(isset($_SESSION["pic"]))
             $profile = $_SESSION["pic"];
         else $profile = "https://raw.githubusercontent.com/Caggegi/mhw3/main/img/icons/account-circle-outline.svg";
     }
@@ -102,21 +102,21 @@
                 </div>
                 <h2 class="desktop">Seleziona</h2>
                 <div class="pick desktop">
-                    
+
                 </div>
             </div>
         </div>
         <header>
             <div id="background"></div>
             <div id="overlay"></div>
-            <div id="search"> 
+            <div id="search">
                 <input type="text" placeholder="Cerca" id="search">
                 </input>
                 <div>
                     <img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/magnify.svg"/>
                     <?php
                         echo '<img id="mobile_pic" class="mobile" src="'.$profile.'"/>';
-                    ?>        
+                    ?>
                 </div>
             </div>
             <div id="info">
@@ -153,7 +153,7 @@
                         <img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/heart-outline.svg" class="mobile">
                         <h4>Preferiti</h4>
                     </div>
-                    <div class="nav_button">
+                    <div class="nav_button" id="titolo_iscrizioni">
                         <img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Dark/account-multiple-check-outline.svg" class="desktop">
                         <img src="https://raw.githubusercontent.com/Caggegi/mhw1/master/img/Light/account-multiple-check-outline.svg" class="mobile">
                         <h4>Iscrizioni</h4>
@@ -187,7 +187,7 @@
                 <section class='genre' id='altro'>
                     <h2>Altro</h2>
                     <div class='show-case'></div>
-                </section> 
+                </section>
             </article>
         </div>
         <footer>
@@ -202,4 +202,3 @@
         </footer>
     </body>
 </html>
-
