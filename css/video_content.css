@@ -20,6 +20,7 @@ div#video_frame iframe{
 
 main{
     display: flex;
+    flex-direction: row;
 }
 
 div#info{
@@ -164,4 +165,32 @@ img#little_ppic{
     border-radius: 100%;
     margin: 5px;
     border: 2px solid white;
+}
+@media (max-width: 950px) {
+  main{
+    display: flex;
+    flex-direction: column;
+  }
+
+  div#video_frame{
+      margin: 0px 0px 0px 0px;
+      width: 90%;
+  }
+
+  div#video_frame iframe{
+      border-radius: 0px;
+      width: 100vw;
+      height: calc(100vw*9/16);
+      box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 4px;
+  }
+
+  div#info{
+      margin: 0px;
+      width: 90vw;
+      padding: 0px 5vw;
+      background-color: #080808;
+      border-radius: 8px 8px 0px 0px;
+      height: 100%;
+  }
+
 }

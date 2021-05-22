@@ -110,7 +110,7 @@ function signup_login(event){
             event.preventDefault();
             error.innerHTML="";
             const title = document.createElement("h3");
-            title.textContent = "Campo vuoto";
+            title.textContent = "Penso che tu abbia bisogno di occhiali nuovi";
             error.appendChild(title);
             const string = document.createElement("p");
             string.textContent = "Il campo "+campo+" è vuoto, compila tutti i campi";

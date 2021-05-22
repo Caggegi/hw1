@@ -155,7 +155,7 @@
                                     break;
                                 case "wrong_psw":
                                     echo "<div class='error'>";
-                                    echo "<h3>Errore</h3>";
+                                    echo "<h3>Oh no... l'hai scritta su qualche bigliettino? vero? VEROO??!?!?</h3>";
                                     echo "<p>La password inserita non è corretta, riprova.</p>";
                                     echo "</div>";
                                     break;

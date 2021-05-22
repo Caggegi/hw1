@@ -448,6 +448,10 @@ div.menu_priority{
         display: none;
     }
 
+    div#titolo_iscrizioni, div#titolo_iscrizioni:hover{
+      background-color:  #101010;
+      filter: opacity(0.3);
+    }
 
     div#main article#video-frame{
         width: 100%;
