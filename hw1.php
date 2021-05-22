@@ -91,7 +91,7 @@
                                     else if($row->tipo == "annuale")
                                         echo "<a href='leave_us.php'>🥑Non voglio pagare più</a>";
                                     else
-                                        echo "<a href='leave_us.php'>❓Non voglio pagare più</a>";
+                                        echo "<a href='leave_us.php'>🦋Is this a bug?</a>";
                                 }
                                 mysqli_close($connection);
                             } else{
