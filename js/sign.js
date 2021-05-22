@@ -88,7 +88,7 @@ function signup_login(event){
                     error.classList.remove("hidden");
                 }
                 else{
-                    if(/[A-Za-z]+/.test(modulo.password.value) &&
+                    if(/[A-Za-z]+/.test(modulo.password.value) && 
                         /[0-9]+/.test(modulo.password.value) && /[^a-z0-9]+/i.test(modulo.password.value)){
                         error.classList.add("hidden");
                     }else{
@@ -138,5 +138,5 @@ function changeSpecGIF(){
 function changeCreatGIF(){
     const left_image = document.querySelector("main div.left_image");
     left_image.style.backgroundColor = "#4a4b58";
-    left_image.querySelector("img").src = "img/GIF/signup2.gif";
+    left_image.querySelector("img").src = "img/GIF/signup2.gif"
 }
