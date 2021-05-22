@@ -137,33 +137,29 @@
                             switch ($errore){
                                 case "already_registered":
                                     echo "<div class='error'>";
-                                    echo "<h3>Errore</h3>";
+                                    echo "<h3>Già ti conosco!😏</h3>";
                                     echo "<p>Utente già registrato effettua il login</p>";
                                     echo "</div>";
                                     break;
                                 case "unknown_mode":
                                     echo "<div class='error'>";
-                                    echo "<h3>Errore</h3>";
+                                    echo "<h3>Qualcuno qui sta barando...</h3>";
                                     echo "<p>Modalità di accesso sconosciuta contattare il supporto</p>";
                                     echo "</div>";
                                     break;
                                 case "not_registered":
                                     echo "<div class='error'>";
-                                    echo "<h3>Errore</h3>";
-                                    echo "<p>Non sei ancora registrato!</p>";
+                                    echo "<h3>Scusa come hai detto che ti chiami? Ah, ancora non me lo hai detto...</h3>";
+                                    echo "<p>Effettua il signUp, non sei registrato</p>";
                                     echo "</div>";
                                     break;
                                 case "wrong_psw":
                                     echo "<div class='error'>";
-                                    echo "<h3>Errore</h3>";
+                                    echo "<h3>Qualcuno qui ha la memoria corta eh!😂</h3>";
                                     echo "<p>La password inserita non è corretta, riprova.</p>";
                                     echo "</div>";
                                     break;
                                 default:
-                                    echo "<div class='error'>";
-                                    echo "<h3>Errore</h3>";
-                                    echo "<p>Si è verificato un errore sconosciuto, riprova più tardi</p>";
-                                    echo "</div>";
                                     break;
                             }
                         }
