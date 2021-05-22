@@ -80,7 +80,7 @@
                                         if($SCreator == $creator)
                                         echo "<div id='support' class='supporting' data-creator='".$creator."'><p>abbonato</p></div>";
                                     else
-                                        echo "<div id='support' class='support' data-creator='".$creator."'><p>abbonati</p></div>";
+                                        echo "<div class='no-support' data-creator='".$creator."'><p>Abbonato altrove</p></div>";
                                     }
                                     else echo "<div id='support' class='support' data-creator='".$creator."'><p>abbonati</p></div>";
                                 } else
