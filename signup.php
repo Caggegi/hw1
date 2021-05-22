@@ -1,9 +1,9 @@
 <?php
     require_once("db_credentials.php");
 
-    session_start();
     function setUserSession(int $hash, string $nome, string $cognome, string $tipo, string $user, 
-        string $psw, string $mail, int $anno, string $pic){
+        string $psw, string $mail, int $anno, string $pic){   
+            session_start();
             $_SESSION['hash'] = $hash;
             $_SESSION['nome'] = $nome;
             $_SESSION['cognome'] = $cognome;
@@ -75,10 +75,11 @@
                 } else{
                     $ok=1;
                     while($row = mysqli_fetch_object($res)){
-                        if($row->password == hash("sha256",$password))
+                        if($row->password == hash("sha256",$password)){
                             $ok=0;
-                        setUserSession($row->hash, $row->name,$row->surname, $_POST['type'],$_POST['username'],$_POST['password'],
+                            setUserSession($row->hash, $row->name,$row->surname, $_POST['type'],$_POST['username'],$_POST['password'],
                             $row->email,$row->anno_iscrizione, $row->profile_pic);
+                        }
                     }
                     if($ok){
                         $errore = "wrong_psw";
@@ -96,10 +97,11 @@
                 } else{
                     $ok=1;
                     while($row = mysqli_fetch_object($res)){
-                        if($row->password == hash("sha256",$password))
+                        if($row->password == hash("sha256",$password)){
                             $ok=0;
                             setUserSession($row->hash, $row->name,$row->surname, $_POST['type'],$_POST['username'],
                                 $_POST['password'], $row->email,$row->anno_iscrizione,$row->profile_pic);
+                        }
                     }
                     if($ok){
                         $errore = "wrong_psw";
@@ -149,7 +151,7 @@
                                     break;
                                 case "not_registered":
                                     echo "<div class='error'>";
-                                    echo "<h3>Scusa come hai detto che ti chiami? Ah, ancora non me lo hai detto...</h3>";
+                                    echo "<h3>Scusa come hai detto che ti chiami? Ah, non lo hai ancora detto...</h3>";
                                     echo "<p>Effettua il signUp, non sei registrato</p>";
                                     echo "</div>";
                                     break;

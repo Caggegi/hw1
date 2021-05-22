@@ -6,7 +6,7 @@
         if($_GET['modalita'] == "preferiti"){
             session_start();
             if(isset($_SESSION['hash'])){
-                $query = "SELECT v.titolo, v.immagine, v.descrizione, v.src, v.id, v.tipo, c.username FROM video v JOIN creator c ON v.creator=c.hash join preferiti p on v.id=p.video where spettatore=".$_SESSION['hash'];
+                $query = "SELECT v.titolo, v.immagine, v.descrizione, v.src, v.id, v.tipo, c.username FROM video v JOIN creator c ON v.creator=c.hash join preferiti p on v.id=p.video where spettatore=".mysqli_real_escape_string($connection,$_SESSION['hash']);
                 $res = mysqli_query($connection, $query);
                 while($row=mysqli_fetch_assoc($res)){
                     $contents[] = array('titolo'=>$row['titolo'], 'immagine'=>$row['immagine'], 'src'=>$row['src'], 
@@ -40,7 +40,7 @@
         } else{
             if(isset($_GET['creator']))
                 $query = "SELECT v.titolo, v.immagine, v.descrizione, v.id, v.tipo, c.username FROM video v ".
-                    "JOIN creator c ON v.creator=c.hash WHERE creator='".$_GET['creator']."';";
+                    "JOIN creator c ON v.creator=c.hash WHERE creator='".mysqli_real_escape_string($connection,$_GET['creator'])."';";
             else
                 $query = "SELECT v.titolo, v.immagine, v.descrizione, v.src, v.id, v.tipo, c.username FROM video v ".
                     "JOIN creator c ON v.creator=c.hash;";

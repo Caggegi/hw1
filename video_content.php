@@ -8,7 +8,7 @@
         <?php
             require_once("db_credentials.php");
             $connection = mysqli_connect($mydb_connect['server'], $mydb_connect['user'], $mydb_connect['psw'], $mydb_connect['db']) or die(mysqli_connect_error);
-            $query = "SELECT * from video where id=".$_GET['id'];
+            $query = "SELECT * from video where id=".mysqli_real_escape_string($connection,$_GET['id']);
             $res = mysqli_query($connection, $query);
             $row = mysqli_fetch_object($res);
             $creator = $row->creator;
