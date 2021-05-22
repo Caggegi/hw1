@@ -34,14 +34,13 @@ function changeMode(event){
 form.addEventListener('submit', signup_login);
 
 function signup_login(event){
-    const modulo = event.currentTarget();
+    const modulo = event.currentTarget;
     const error = document.querySelector("div#error");
     document.querySelector("div.error").classList.add("hidden");
+    error.classList.remove("hidden");
     let campo="";
     if(mode){ //è stato scelto sign up;
-        if(modulo.username.value.length === 0)
-            campo="username";
-        else if(modulo.name.value.length === 0)
+        if(modulo.name.value.length === 0)
             campo="nome";
         else if(modulo.surname.value.length === 0)
             campo="cognome";
@@ -53,7 +52,6 @@ function signup_login(event){
             campo="conferma password";
         if(campo.length!==0){
             event.preventDefault();
-            error.classList.remove("hidden");
             error.innerHTML="";
             const title = document.createElement("h3");
             title.textContent = "Voglio più dati! ԅ(≖‿≖ԅ)";
@@ -65,7 +63,6 @@ function signup_login(event){
         } else{
             if(modulo.confirm.value !== modulo.password.value){
                 event.preventDefault();
-                error.classList.remove("hidden");
                 error.innerHTML="";
                 const title = document.createElement("h3");
                 title.textContent = "Battere sulla tastiera genera una password efficace... così efficace che non la sai nemmeno tu";
@@ -77,7 +74,6 @@ function signup_login(event){
             } else {
                 if(modulo.password.value.length<8){
                     event.preventDefault();
-                    error.classList.remove("hidden");
                     error.innerHTML="";
                     const title = document.createElement("h3");
                     title.textContent = "Le gambe di pinocchio sono più lunghe...";
@@ -93,7 +89,6 @@ function signup_login(event){
                         error.classList.add("hidden");
                     }else{
                         event.preventDefault();
-                        error.classList.remove("hidden");
                         error.innerHTML="";
                         const title = document.createElement("h3");
                         title.textContent = "La tua password dovrebbe fare più palestra, così è troppo debole";
@@ -113,10 +108,9 @@ function signup_login(event){
             campo="password";
         if(campo.length!==0){
             event.preventDefault();
-            error.classList.remove("hidden");
             error.innerHTML="";
             const title = document.createElement("h3");
-            title.textContent = "Hai bisogno di occhiali nuovi?";
+            title.textContent = "Campo vuoto";
             error.appendChild(title);
             const string = document.createElement("p");
             string.textContent = "Il campo "+campo+" è vuoto, compila tutti i campi";
