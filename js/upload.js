@@ -124,9 +124,6 @@ function onSaveJson(json){
     console.log(json);
 }
 
-const unsplash_key = "TiyMZxRbh4vc2ZZCNtHMe7FSYjMU2uGn2iryP_wb2n4";
-const unsplash = "https://api.unsplash.com/"
-
 const changeProfilePicture = document.querySelector("form#choose_category");
 changeProfilePicture.addEventListener("submit", reloadPicCategories);
 
@@ -138,28 +135,7 @@ function reloadPicCategories(event){
 
 function showUnsplashed(category){
     document.querySelector("div.icon_menu div.m_body div.pick").innerHTML = "";
-    if(category === ""){
-        fetch(unsplash+"/search/photos/?page="+Math.floor(Math.random()*9)+1+"&query=pattern"
-                                      +"&orientation=squarish&content_filter=high&per_page=5",{
-            method:"get",
-            headers:{
-                "Authorization":"Client-ID "+unsplash_key,
-            }
-        })
-        .then(onResponseUnsplashed, onError2).then(unsplashJson);
-    } else{
-        fetch(unsplash+"/search/photos/?page=1&query="+category+"&orientation=squarish&content_filter=high&per_page=5",{
-            method:"get",
-            headers:{
-                "Authorization":"Client-ID "+unsplash_key,
-            }
-        })
-        .then(onResponseUnsplashed, onError2).then(unsplashJson);
-    }
-}
-
-function onResponseUnsplashed(response){
-    return response.json();
+    fetch("php/unsplash_caller.php?categoria="+category).then(onJsonResponse).then(unsplashJson);
 }
 
 function unsplashJson(json){
@@ -174,9 +150,6 @@ function unsplashJson(json){
             append_candidate(risultati[i].urls.thumb);
         }
     }
-}
-
-function onError2(error){
 }
 
 function changeCurrentPic(event){
