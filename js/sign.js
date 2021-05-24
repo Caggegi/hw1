@@ -86,7 +86,20 @@ function signup_login(event){
                 else{
                     if(/[A-Za-z]+/.test(modulo.password.value) &&
                         /[0-9]+/.test(modulo.password.value) && /[^a-z0-9]+/i.test(modulo.password.value)){
-                        error.classList.add("hidden");
+                          const emailReg = /@./;
+                          if(emailReg.test(modulo.email.value)){
+                            error.classList.add("hidden");
+                          } else{
+                              event.preventDefault();
+                              error.innerHTML="";
+                              const title = document.createElement("h3");
+                              title.textContent = "Torna dopo aver googlato cosa è una email";
+                              error.appendChild(title);
+                              const string = document.createElement("p");
+                              string.textContent = "Non hai inserito un indirizzo email valido";
+                              error.appendChild(string);
+                              error.classList.remove("hidden");
+                          }
                     }else{
                         event.preventDefault();
                         error.innerHTML="";

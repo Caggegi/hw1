@@ -140,7 +140,7 @@
                             switch ($errore){
                                 case "already_registered":
                                     echo "<div class='error'>";
-                                    echo "<h3Già ti conosco!😏</h3>";
+                                    echo "<h3>Già ti conosco!😏</h3>";
                                     echo "<p>Utente già registrato effettua il login</p>";
                                     echo "</div>";
                                     break;
