@@ -49,8 +49,11 @@
                 if(mysqli_num_rows($res)>0){
                     $errore = "already_registered";
                 } else{
+                    $image = 'https://raw.githubusercontent.com/Caggegi/mhw3/main/img/icons/account-circle-outline.svg';
+                    if($_POST['name']=='Dwayne' && $_POST['surname']=='Johnson')
+                      $image = 'img/others/lapietra.jpg';
                     $query = "INSERT INTO creator(name, surname, username, email, password, profile_pic, anno_iscrizione, n_followers) ".
-                    "VALUES ('".$name."','".$surname."','".$username."','".$email."','".hash('sha256', $password)."','https://raw.githubusercontent.com/Caggegi/mhw3/main/img/icons/account-circle-outline.svg','".date("Y")."','0');";
+                    "VALUES ('".$name."','".$surname."','".$username."','".$email."','".hash('sha256', $password)."','".$image."','".date("Y")."','0');";
                     $res = mysqli_query($connection, $query);
                     $query = "SELECT * from creator where username='".$username."' && password='".hash('sha256',$password)."';";
                     $row = mysqli_fetch_object(mysqli_query($connection, $query));
