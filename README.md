@@ -2,7 +2,7 @@
  ## 🌘 Introduzione
  Repository del primo homework di Database e Web programming 2020/2021 modulo Web programming
  ## ✏️ Concept
- Vorrei realizzare una piattaforma simile agli ormai popolarissimi YouTube e Twitch che permetta agli utenti di usufruire dei contenuti creati dai loro artisti preferiti. 
+ Vorrei realizzare una piattaforma simile agli ormai popolarissimi YouTube e Twitch che permetta agli utenti di usufruire dei contenuti creati dai loro artisti preferiti.
  Gli utenti premium possono abbonarsi o meno a un Creator così da supportarlo. Concettualmente parte dei fondi va a [treedom](https://www.treedom.net) 🌳.
 
  ## ⭐ Nuove Funzioni
@@ -14,6 +14,7 @@
  - Aggiunta pagina selezione abbonamenti;
  - Aggiunti video recenti e in tendenza;
  - Aggiunta interazione con il database di VideoTube.
+ - Dwayne Johnson 💪
 
  ## 👷‍♀️ Istruzioni per l'esecuzione
  - Scarica o clona il progetto nella cartella htdocs di xampp;
